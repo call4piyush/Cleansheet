@@ -1,0 +1,5 @@
+127.0.0.1 - - [17/Nov/2015:17:28:41 +0530] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [17/Nov/2015:17:28:47 +0530] "GET /Cleansheet/ HTTP/1.1" 200 1178
+0:0:0:0:0:0:0:1 - - [17/Nov/2015:17:28:47 +0530] "GET /Cleansheet/js/jquery.min.js HTTP/1.1" 404 1005
+0:0:0:0:0:0:0:1 - - [17/Nov/2015:17:28:47 +0530] "GET /Cleansheet/css/bootstrap.min.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [17/Nov/2015:17:30:09 +0530] "GET /Cleansheet/adminAuto.jsp HTTP/1.1" 500 2579

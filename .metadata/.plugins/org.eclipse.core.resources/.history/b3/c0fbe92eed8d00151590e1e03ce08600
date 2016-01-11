@@ -1,0 +1,461 @@
+package com.controllers;
+
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.DecimalFormat;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.DB.connection.Connect;
+
+public class Basic extends HttpServlet {
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.setContentType("text/html");
+		int empid = Integer.parseInt(request.getParameter("empid"));
+		try {
+			HttpSession session = request.getSession();
+			calculateBasic(session, request, response);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			if(empid==11){
+				RequestDispatcher ReqDis = request.getRequestDispatcher("Adminerror.jsp");
+				ReqDis.forward(request, response);
+					
+			}else{RequestDispatcher ReqDis = request.getRequestDispatcher("error.jsp");
+			ReqDis.forward(request, response);}
+		}
+	}
+
+	private void calculateBasic(HttpSession session, HttpServletRequest request, HttpServletResponse response)throws SQLException, ServletException, IOException {
+		PrintWriter out=response.getWriter();
+		DecimalFormat df = new DecimalFormat("#.##");
+		double distance = Double.parseDouble(request.getParameter("distance"));
+		int empid = Integer.parseInt(request.getParameter("empid"));
+		String truckType=request.getParameter("Capacity");
+		
+		String param = request.getParameter("param");
+		double backhaul = Double.parseDouble(request.getParameter("back"));
+		//String type = request.getParameter("good");
+		String start = request.getParameter("start");
+		String end = request.getParameter("end");
+		
+		session.setAttribute("start", start);
+		session.setAttribute("end", end);
+		session.setAttribute("distance", distance);
+		//session.setAttribute("type", type);
+		session.setAttribute("cap", truckType);
+		session.setAttribute("param", param);
+		session.setAttribute("back", backhaul);
+		
+		
+		double intrest1 = 0, costOfTyre = 0, costOfTruck = 0, loan = 0,noOfYears = 0,
+				residualValue = 0, noOfTyre = 0, costOfTyreUsed = 0, tyreLife = 0, tyreLifeUsed = 0,
+				 mileage = 0, noTrips = 0;
+
+		double mileageWithLoad = 0, diesel = 0,roi=0;
+		int cap=0;
+		
+		Connection con = Connect.getconnection();
+
+		PreparedStatement ps = con.prepareStatement("select * from truckparam where typeofgood=?");
+		ps.setString(1, truckType);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next()) {
+			costOfTruck = rs.getDouble("costoftruck");
+			loan = rs.getDouble("loanpercentage");
+			intrest1 = rs.getDouble("rateofintrest");
+			roi=rs.getDouble("flatroi");
+			costOfTyre = rs.getDouble("tyrecost");
+			noOfYears = rs.getDouble("yearsemi");
+			residualValue = rs.getDouble("residualvalueoftruck");
+			noOfTyre = rs.getDouble("tyres");
+			costOfTyreUsed = rs.getDouble("reusedtyrecost");
+			tyreLife = rs.getDouble("tyrelife");
+			tyreLifeUsed = rs.getDouble("reusedtyrelife");
+			mileage=rs.getDouble("dieselmileage");
+			mileageWithLoad=rs.getDouble("diesealmileagewithload");
+			diesel=rs.getDouble("dieselcost");
+			cap=rs.getInt("capacity");
+		}
+		PreparedStatement ps0 = con.prepareStatement("select `NoofTrip` from `slabtable` WHERE `Min Distance` <= ? AND `Max Distance` >?");
+		ps0.setInt(1, (int) distance);
+		ps0.setInt(2, (int) distance);
+		ResultSet rs0 = ps0.executeQuery();
+		while (rs0.next()) {			
+			noTrips = rs0.getDouble("NoofTrip");
+		}
+		double cost = calculateTyreCostPerKM(noOfTyre, costOfTyre, costOfTyreUsed, tyreLife, tyreLifeUsed);
+		double loanamount = calculateLoanAmount(loan, costOfTruck);
+		double paid = calculatePaid(costOfTruck, loanamount);
+		double residualValueTruck = calulateResidualValueOfTruck(residualValue, costOfTruck);
+		double depreciation = calculateDepreciation(costOfTruck, residualValueTruck, noOfYears);
+		double interestcost = calculateInterestCostPerMonth(roi, loanamount);
+		
+		double netMileage =calculateNetMilage(mileageWithLoad, backhaul,mileage);
+		double roundtrip = calculateRoundTrip(distance);
+		double distanceTravled = calculateKmRunPerMonthAvg(roundtrip,noTrips);
+		PreparedStatement ps1 = con
+				.prepareStatement("UPDATE truckparam SET loanamount="
+						+ loanamount + ",amountpaid=" + paid +",kmrunpermonthaverage="+distanceTravled+ ",tyrecostperkm=" + cost +",roundTrip="+roundtrip+ "WHERE typeofgood=?");
+		ps1.setString(1, truckType);
+		ps1.executeUpdate();
+		
+		/*
+		out.println("<p>");
+		
+		out.print("Truck Parameter<br>");
+		out.print("distance"+distance+"<br>");
+		out.print("costOfTruck"+costOfTruck+"<br>");
+		out.print("loan"+loan+"<br>");
+		out.print("intrest"+intrest1+"<br>");
+		out.print("roi"+roi+"<br>");
+		out.print("costOfTyre"+costOfTyre+"<br>");
+		out.print("noOfYears"+noOfYears+"<br>");
+		out.print("residualValue"+residualValue+"<br>");
+		out.print("noOfTyre"+noOfTyre+"<br>");
+		out.print("costOfTyreUsed"+costOfTyreUsed+"<br>");
+		out.print("tyreLife"+tyreLife+"<br>");
+		out.print("tyreLifeUsed "+tyreLifeUsed+"<br>");
+		out.print("mileage"+mileage+"<br>");
+		out.print("mileageWithLoad"+mileageWithLoad+"<br>");
+		out.print("diesel"+diesel+"<br>");
+		out.print("noTrips"+noTrips+"<br>");
+		out.print("cost"+cost+"<br>");
+		out.print("loanamount "+loanamount+"<br>");
+		out.print("amount paid "+paid +"<br>");
+		out.print("residualValueTruck"+residualValueTruck+"<br>");
+		out.print("depreciation"+depreciation+"<br>");
+		out.print("interestcost"+interestcost+"<br>");
+		out.print("netMileage"+netMileage+"<br>");
+		out.print("roundtrip"+roundtrip+"<br>");
+		out.print("distanceTravled"+distanceTravled+"<br>");
+		out.println("<p>");
+		*/
+		double Salary = 0, batta = 0, maintenance = 0, Admin = 0, tarpaulin = 0;
+		double expense = 0, totaltoll = 0, insurancepercent = 0, permit = 0, tax = 0;
+		double  maintenancePerKm = 0,loading=0;
+		double pro=0;
+		
+		PreparedStatement ps2 = con.prepareStatement("select * from routeparam where typeofgood=?");
+		ps2.setString(1, truckType);
+		ResultSet rs1 = ps2.executeQuery();
+		
+		while (rs1.next()) {
+			expense = rs1.getDouble("routeexpenses");
+			totaltoll = rs1.getDouble("toll");
+			insurancepercent = rs1.getDouble("insuranceaspercentageofvechiclecost");
+			permit = rs1.getDouble("roadpermityear");
+			tax = rs1.getDouble("roadtaxyear");
+			Salary = rs1.getDouble("driver/cleaner salary");
+			batta = rs1.getDouble("driver/cleaner bhatta");
+			maintenance = rs1.getDouble("maintenancepermonth");
+			Admin = rs1.getDouble("admin costs");
+			maintenancePerKm=rs1.getDouble("maintenancecostperkm");
+			tarpaulin = rs1.getDouble("tarpaulin");
+			loading=rs1.getDouble("loadingcharges");
+			pro=rs1.getInt("profitmargin");
+		}
+
+		
+		double toll = calculateTollPerKm(totaltoll, distance);
+		double unloading=calculateUnloadingCharges(cap);
+		double unloadingloading=unloading+loading;
+		double dieselCost =calculateDieselCostPerKm(diesel, netMileage);
+		double variableCost = calculateVaribleCostperKm(dieselCost,toll, cost, maintenancePerKm,expense);
+		double variable = calculateVaribleCostperMonth(variableCost,distanceTravled, unloadingloading);
+		double insuranceMonth = calculateInsurancePerMonth(costOfTruck, insurancepercent);
+		double roadPermit = calculateRoadPermitPerMonth(permit);
+		double roadTax = calculateRoadTaxPerMonth(tax);
+		
+		
+		double fixedcostperMonth = calculatefixedCostPerMonth(roadTax, roadPermit,insuranceMonth, Salary,batta,maintenance, Admin,tarpaulin, depreciation,interestcost);
+		double monthlyoperating =  calculateMonthlyOperatingCost(fixedcostperMonth, variable);
+		
+		double profit=calculateProfitMargin(fixedcostperMonth,pro);
+		
+		double perKmCost= calculatePerKmCost(profit,monthlyoperating,distanceTravled);
+		double monthlyTon = calculateMonthlyTons(cap, backhaul, noTrips);
+		
+		
+		
+		double fixedPTPK = calculateFixedPTPK(fixedcostperMonth,roundtrip,cap, noTrips,backhaul);
+		double variablePTPK = calculateVariablePTPK(variable,roundtrip,cap, noTrips,backhaul);
+		double profitPTPK = calculateProfitPTPK(profit, roundtrip,cap, noTrips,backhaul);
+		double totalPTPK = calculateTotalPTPK(profitPTPK, variablePTPK, fixedPTPK);
+		
+		
+
+		double freightPerTon = calculateFreightPerTon(totalPTPK, distance);
+		
+		double emi = 0;// calculateEmi(intrest1, noOfYears, loanamount);
+		double cashInflow = 0;// calculateCashInFlow(depreciation, interestcost,profitMargin);
+		double cashFlowPerMonth = 0;// calculateFlowPerMonth(emi, cashInflow);
+		double irr = 0;// calculateIRR(cashFlowPerMonth,paid,costOfTruck,residualValue);
+		double workingCapital = 0;
+
+		session.setAttribute("fixedptpk", fixedPTPK);
+		session.setAttribute("variableptpk", variablePTPK);
+		session.setAttribute("profitptpk", profitPTPK);
+		session.setAttribute("ptpk", totalPTPK);
+		session.setAttribute("freightPerTon", freightPerTon);
+
+		PreparedStatement ps3 = con.prepareStatement("UPDATE routeparam SET backhaul=" + backhaul + ",distance="
+				+ distance + ",unloadingchages="+unloading+",loadingunloadingcharges="+unloadingloading+",variblecostperkm=" + variableCost
+				+ ",variblecostpermonth=" + variable + ",insurancepermonth=" + insuranceMonth
+				+ ",workingcapitalinterestcost=" + workingCapital + ",roadpermitmonth=" + roadPermit + ",roadtaxmonth="
+				+ roadTax + ",monthlyoperatingcost=" + monthlyoperating +",perkmcost="
+				+ perKmCost + ",monthlytons=" + monthlyTon + ",fixedptpk=" + fixedPTPK + ",variableptpk=" + variablePTPK
+				+ ", profitptpk=" + profitPTPK + ", totalptpk=" + totalPTPK + ", freightperton=" + freightPerTon+ " WHERE typeofgood=?");
+		PreparedStatement ps31 = con.prepareStatement("UPDATE routeparam SET origin=? ,destination=? WHERE typeofgood=?");
+		ps3.setString(1, truckType);
+		ps3.executeUpdate();
+		ps31.setString(1, start);
+		ps31.setString(2, end);
+		ps31.setString(3, truckType);
+		ps31.executeUpdate();
+		/*
+		out.println("<p>");
+		out.println("Route Paramaters");
+		out.println("Route expense per trip"+expense+"<br>");
+		out.println("toll per trip "+toll +"<br>");
+		out.println("insurancepercent "+insurancepercent +"<br>");
+		out.println("permit anually"+permit +"<br>");
+		out.println("tax anually"+tax +"<br>");
+		out.println("Salary "+Salary +"<br>");
+		out.println("batta "+batta +"<br>");
+		out.println("maintenance per month"+maintenance+"<br>");
+		out.println("Admin Charges"+Admin+"<br>");
+		out.println("tarpaulin"+tarpaulin+"<br>");
+		out.println("profit "+profit +"<br>");
+		out.println("loading"+loading+"<br>");
+		out.println("route per Km"+expense +"<br>");
+		out.println("toll per KM"+toll+"<br>");
+		out.println("unloading"+unloading+"<br>");
+		out.println("unloadingloading"+unloadingloading+"<br>");
+		out.println("dieselCost"+dieselCost+"<br>");
+		out.println("variableCost per Km"+variableCost+"<br>");
+		out.println("variable cost per Month"+variable+"<br>");
+		out.println("insuranceMonth"+insuranceMonth+"<br>");
+		out.println("roadPermit "+roadPermit +"<br>");
+		out.println("fixedcostperMonth"+fixedcostperMonth+"<br>");
+		out.println("monthlyoperating"+monthlyoperating+"<br>");
+		out.println("profit margin"+profit+"<br>");
+		out.println(" perKmCost"+ perKmCost+"<br>");
+		out.println("monthlyTon"+monthlyTon+"<br>");
+		out.println("fixedPTPK"+fixedPTPK+"<br>");
+		out.println("variablePTPK"+variablePTPK+"<br>");
+		out.println("profitPTPK"+profitPTPK+"<br>");
+		out.println("totalPTPK"+totalPTPK+"<br>");
+		out.println("freightPerTon"+freightPerTon+"<br>");
+		out.println("profitkm"+df.format(profit/distanceTravled)+"<br>");
+		out.println("variablekm"+df.format(variable/distanceTravled)+"<br>");
+		out.println("fixedkm"+df.format((fixedcostperMonth+profit)/distanceTravled)+"<br>");
+		
+		out.println("variableton"+df.format(variable/monthlyTon)+"<br>");
+		out.println("profitton"+ df.format(profit/monthlyTon)+"<br>");
+		out.println("fixedton"+df.format((fixedcostperMonth+profit)/monthlyTon)+"<br>");
+		out.println("</p>");
+		*/
+		double costs = cap * distance * totalPTPK;
+		
+		session.setAttribute("cost", costs);
+				
+		session.setAttribute("profitkm", df.format(profit/distanceTravled));
+		session.setAttribute("variablekm",variableCost);
+		session.setAttribute("fixedkm",df.format((fixedcostperMonth+profit)/distanceTravled));
+		
+		session.setAttribute("variableton",df.format(variable/monthlyTon));
+		session.setAttribute("profitton", df.format(profit/monthlyTon));
+		session.setAttribute("fixedton",df.format((fixedcostperMonth+profit)/monthlyTon));
+		
+		session.setAttribute("dep",df.format(depreciation));
+		session.setAttribute("intres",df.format(interestcost));
+		session.setAttribute("salr",df.format(Salary));
+		//session.setAttribute("Total cost",); 		
+		session.setAttribute("insu",df.format(insuranceMonth));
+		session.setAttribute("rota",df.format(roadTax));
+		//session.setAttribute("",);others
+		session.setAttribute("dies",df.format(dieselCost));
+		session.setAttribute("tole",df.format(toll));
+		session.setAttribute("tyres",df.format(cost));
+		session.setAttribute("routes",df.format(expense));
+		session.setAttribute("maint",df.format(maintenancePerKm));
+		
+		
+		if(empid==11){
+			RequestDispatcher ReqDis = request.getRequestDispatcher("AdminResultBasic.jsp");
+			ReqDis.forward(request, response);
+				
+		}else{
+		RequestDispatcher ReqDis = request.getRequestDispatcher("ResultBasic.jsp");
+		ReqDis.forward(request, response);
+		}
+		
+	}
+
+	private double calculateProfitMargin(double fixedcostperMonth, double pro) {
+		
+		return (fixedcostperMonth*pro)/100;
+	}
+
+	private double calculateProfit(double monthlyoperating) {
+		
+		return (double) ((0.0752688172043011)*monthlyoperating);
+	}
+
+	private double calculateKmRunPerMonthAvg(double roundtrip, double noTrips) {
+		
+		return (roundtrip*noTrips);
+	}
+
+	private double calculateVaribleCostperMonth(double variableCost, double distanceTravled, double unloadingloading
+			) {
+
+		return ((variableCost * distanceTravled)+unloadingloading);
+	}
+
+	private double calculateTotalPTPK(double profitPTPK, double variablePTPK, double fixedPTPK) {
+
+		return (profitPTPK + variablePTPK + fixedPTPK);
+	}
+
+	private double calculateProfitPTPK(double profit, double roundtrip, int cap, double noTrips, double backhaul) {
+		return (profit / ((roundtrip/2)*cap*noTrips*(1+(backhaul/100))));
+	}
+
+	private double calculateVariablePTPK(double variable, double roundtrip, int cap, double noTrips, double backhaul) {
+
+		return (variable / ((roundtrip/2)*cap*noTrips*(1+(backhaul/100))));
+	}
+
+	private double calculateFixedPTPK(double fixedcostperMonth, double roundtrip, int cap, double noTrips, double backhaul) {
+
+		return (fixedcostperMonth / ((roundtrip/2)*cap*noTrips*(1+(backhaul/100))));
+	}
+
+	private double calculateFreightPerTon(double totalPTPK, double distance) {
+
+		return (double)(totalPTPK * distance);
+	}
+
+	private double calculateRoundTrip(double distance) {
+
+		return (double)(distance * 2);
+	}
+
+	private double calculateTotalCostPerTon(double totalPTPK, double distance, int cap) {
+
+		return (totalPTPK * distance * cap);
+	}
+
+	private double calculateMonthlyTons(int cap, double backhaul, double noTrips) {
+
+		return (noTrips * cap * (1 + (backhaul/100)));
+	}
+
+	private double calculatePerKmCost(double profitMargin, double monthlyoperating, double distanceTravled) {
+		
+		return ((profitMargin+monthlyoperating)/distanceTravled);
+	}
+
+	private double calculateMonthlyOperatingCost(double fixedcostperMonth, double variable) {
+		
+		return (fixedcostperMonth+variable);
+	}
+
+	private double calculatefixedCostPerMonth(double roadTax, double roadPermit, double insuranceMonth, double salary,
+			double batta, double maintenance, double admin, double tarpaulin, double depreciation, double interestcost ) {
+		
+		return (admin+batta+insuranceMonth+maintenance+roadPermit+roadTax+salary+tarpaulin+depreciation+interestcost);
+	}
+
+	private double calculateRoadTaxPerMonth(double tax) {
+		
+		return (tax/12);
+	}
+
+	private double calculateRoadPermitPerMonth(double permit) {
+		
+		return (permit/12);
+	}
+
+	private double calculateInsurancePerMonth(double costOfTruck, double insurancepercent) {
+		
+		return ((costOfTruck * insurancepercent) / 1200);
+	}
+
+	private double calculateVaribleCostperKm(double dieselCost, double toll, double cost, double maintenancePerKm,
+			double route) {
+		return (dieselCost+toll+cost+maintenancePerKm+route);
+	}
+
+	private double calculateRouteExpence(double expense, double distance) {
+
+		return (expense/distance);
+	}
+
+	private double calculateUnloadingCharges(int cap) {
+		
+		return (45*cap);
+	}
+
+	private double calculateDieselCostPerKm(double diesel, double netMileage) {
+		return (diesel/netMileage);
+	}
+
+	private double calculateNetMilage(double mileageWithLoad, double backhaul, double mileage) {
+		
+		return (((mileageWithLoad*100+(mileageWithLoad*backhaul))+(mileage)*(100-backhaul))/200);
+	}
+
+	private double calculateTollPerKm(double totaltoll, double distance) {
+	
+		return (double)(totaltoll/distance);
+	}
+
+	private double calulateResidualValueOfTruck(double residualValue, double costOfTruck) {
+		
+		return (costOfTruck*residualValue);
+	}
+
+	private double calculateInterestCostPerMonth(double roi, double loanamount) {
+		
+		return ((roi*loanamount)/1200);
+	}
+
+	private double calculateDepreciation(double costOfTruck, double residualValue, double noOfYears) {
+		
+		return (((costOfTruck-residualValue)/noOfYears)/12);
+	}
+
+	private double calculatePaid(double costOfTruck, double loanamount) {
+		
+		return (costOfTruck-loanamount);
+	}
+
+	private double calculateLoanAmount(double loan, double costOfTruck) {
+		
+		return ((costOfTruck * loan) / 100);
+	}
+
+	private double calculateTyreCostPerKM(double noOfTyre, double costOfTyre, double costOfTyreUsed, double tyreLife,
+			double tyreLifeUsed) {
+		
+		return (noOfTyre*(costOfTyre+costOfTyreUsed)/(tyreLife+tyreLifeUsed));
+	}
+
+	
+}

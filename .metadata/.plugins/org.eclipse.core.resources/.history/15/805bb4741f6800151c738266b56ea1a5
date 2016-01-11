@@ -1,0 +1,113 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Home Page</title>
+<script type="text/javascript"
+	src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script language="javascript" type="text/javascript" src="js/Map.js"></script>
+<script type="text/javascript">
+
+function hide(){
+document.getElementById('back').style.visibility='hidden';
+document.getElementById("back").value="100";
+}
+function show(){
+document.getElementById('back').style.visibility='visible';
+document.getElementById("back").value="";
+}
+</script>
+<link rel="stylesheet" href="css/homestyle.css">
+</head>
+<body onload="initialize()">
+
+	<p align="right">
+		Hello,
+		<%= session.getAttribute( "name" ) %>
+
+		<br> <a href="Logout">Logout</a> <br>
+	</p>
+
+	<header>
+	<h1>CLEANSHEET</h1>
+	</header>
+
+	<nav> <a href="home.jsp">Basic</a> <br>
+	<a href="Advanced.jsp">Advanced</a> <br>
+	<a href="Auto.jsp">Auto</a> <br>
+	<a href="Param.jsp">Parameter Master</a> <br>
+	<a href="uploadFreight.jsp">Upload Freight</a> <br>
+	<a href="uploadContract.jsp">Upload Contract</a> <br>
+	</nav>
+
+	<section>
+	<center>
+		<h2>Basic</h2>
+	</center>
+	<form method="Post" action="Basic">
+		<table align="center">
+			<tr>
+				<td colspan="2" rowspan="2"><input type="text" name="start"
+					id="start" placeholder="Origin" onchange="calcRoute()" required><br></td>
+			</tr>
+			<tr>
+				<td colspan="3"><input type="text" name="end" id="end"
+					placeholder="Destination" onchange="calcRoute()" required><br></td>
+			</tr>
+
+			<tr>
+				<td>Type of Goods</td>
+				<td><input type="radio" name="good" value="Container">Container</td>
+				<td><input type="radio" name="good" value="Bulk">Bulk</td>
+				<td><input type="radio" name="good" value="Liquid">Liquid</td>
+				<td><input type="radio" name="good" value="Temp Controlled">Temp.
+					Controlled</td>
+			</tr>
+			<tr>
+				<td colspan="3">Loading capacity(In Tons)</td>
+				<td colspan="2"><select name='Capacity'>
+						<% for(int i=9;i<34;i++)
+						{
+							out.write("<option value="+i+" name="+i+">"+i+"</option><br>");
+						
+						} %>
+				</select></td>
+			</tr>
+			<tr>
+				<td colspan="2">Parameters</td>
+				<td colspan="1"><input type="radio" name="param" value="ftl"
+					onclick="hide()">FTL</td>
+				<td colspan="1"><input type="radio" name="param" value="ltl"
+					onclick="show()">LTL</td>
+			</tr>
+			<tr>
+				<td colspan="5"><center>
+						<input type="text" name="back" id="back" placeholder="Backhaul %"
+							style="visibility: hidden;" required>
+					</center></td>
+			</tr>
+			<tr>
+				<td colspan="5"><center>
+						<input type="hidden" name="distance" id="distance"> <input
+							type="hidden" value='<%=session.getAttribute("empid")%>'
+							name="empid"> <input type="submit" name="submit"
+							value="Submit">
+					</center></td>
+			</tr>
+			<tr>
+
+			</tr>
+		</table>
+	</form>
+	<font size="4" color="blue">
+		<p id="1234"></p>
+	</font> </section>
+	<div id="map_canvas" class="right"></div>
+
+	<footer> Copyright © McKinsey & Company </footer>
+
+
+</body>
+</html>

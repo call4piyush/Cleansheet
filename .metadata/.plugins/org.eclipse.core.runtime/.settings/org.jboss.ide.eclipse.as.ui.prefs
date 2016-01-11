@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+org.jboss.ide.eclipse.as.ui.defaultWebServer=GlassFish 4 at localhost [domain1]
+org.jboss.ide.eclipse.as.ui.preferences.disabled.automatic.server.view=true
+org.jboss.ide.eclipse.as.ui.preferences.enabledDecorators.1=true
+org.jboss.ide.eclipse.as.ui.preferences.runtime.last.type.org.jboss.ide.eclipse.as.runtime.71=C\:\\jboss-as-7.1.1.Final
+org.jboss.ide.eclipse.as.ui.preferences.runtime.last.type.org.jboss.ide.eclipse.as.runtime.eap.61=C\:\\Users\\Piyush Joshi\\EAP-6.4.0
+org.jboss.ide.eclipse.as.ui.preferences.runtime.last.type.org.jboss.ide.eclipse.as.runtime.wildfly.100=C\:\\wildfly-10.0.0.CR2
+org.jboss.ide.eclipse.as.ui.wizards.LAST_RUNTIME_CREATED=JBoss EAP 6.1+ Runtime
+org.jboss.ide.eclipse.as.ui.wizards.LAST_SERVER_CREATED=JBoss EAP 6.1+1443589466074

@@ -1,0 +1,38 @@
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="com.DB.connection.Connect"%>
+<%
+		int empid=(int)session.getAttribute("empid");
+		 String sql = "select * from `truckparam`  order by `capacity`";
+			  
+				try{ 
+							 Connection con = Connect.getconnection();
+							 PreparedStatement ps=con.prepareStatement(sql);					 		 
+					 		 ResultSet rs = ps.executeQuery();
+					 		 String[] selected;
+					 		 selected=request.getParameterValues("check");
+					 		 int j=0;
+					 		 String[] type=null;			
+      					 		 while( rs.next() )
+					 		 { for (int i = 0; i < selected.length; i++) 
+     						 { 
+      					 		 if(Integer.parseInt(selected[i]) == j)
+      					 		 type[i]=rs.getString("typeofgood");
+      					 		 }j++;
+      					 		 }
+      					 	 String sql1 = "Delete from `truckparam`  where typeofgood= ?";
+      					 	 PreparedStatement ps1=con.prepareStatement(sql1);
+      					 	 for(int z=0; z<j; z++)
+      					 	 {
+      					 	 ps1.setString(1, type[z]);
+      					 	 ps1.execute();
+      					 	 }
+      					 	 }catch(Exception e){
+					e.printStackTrace();
+					RequestDispatcher ReqDis = request.getRequestDispatcher("Adminerror.jsp");
+				ReqDis.forward(request, response);
+				}
+      					 	 
+      					 	 %>

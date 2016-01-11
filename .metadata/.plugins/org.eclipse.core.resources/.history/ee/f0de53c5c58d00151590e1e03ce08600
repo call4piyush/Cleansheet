@@ -1,0 +1,26 @@
+package com.DB.connection;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class Connect {
+	
+	public static Connection getconnection() {
+		
+		try{
+			String url = "https://mysql167296-cleansheet.jelastic.servint.net";
+			 String dbName = "MCKC"; 
+			 String driver = "com.mysql.jdbc.Driver";
+			 String userName = "root";
+			 String password = "3cIKS9RH2o";
+			 Class.forName(driver).newInstance();
+			 Connection con = DriverManager.getConnection(url+dbName,userName,password);
+			 return con;
+	}
+		catch(Exception e){
+			System.out.println(e);
+	}
+		return null;
+		
+	}
+}

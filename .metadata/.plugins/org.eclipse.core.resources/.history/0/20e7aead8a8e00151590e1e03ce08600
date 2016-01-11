@@ -1,0 +1,130 @@
+package com.controllers;
+
+import java.io.File;
+import java.io.FileInputStream;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import java.util.ArrayList;
+
+import java.util.Iterator;
+import java.util.List;
+
+
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Iterator;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import com.DB.connection.Connect;
+
+@SuppressWarnings("serial")
+public class UploadFreight extends HttpServlet {
+
+	@SuppressWarnings("rawtypes")
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+
+		out.println("Hello<br/>");
+
+		boolean isMultipartContent = ServletFileUpload.isMultipartContent(request);
+		if (!isMultipartContent) {
+			out.println("You are not trying to upload<br/>");
+			return;
+		}
+		out.println("You are trying to upload<br/>");
+
+		FileItemFactory factory = new DiskFileItemFactory();
+		ServletFileUpload upload = new ServletFileUpload(factory);
+		try {
+			List<FileItem> fields = upload.parseRequest(request);
+			out.println("Number of fields: " + fields.size() + "<br/><br/>");
+			Iterator<FileItem> it = fields.iterator();
+			if (!it.hasNext()) {
+				out.println("No fields found");
+				return;
+			}
+			out.println("<table border=\"1\">");
+			while (it.hasNext()) {
+				out.println("<tr>");
+				FileItem fileItem = it.next();
+				boolean isFormField = fileItem.isFormField();
+				if (isFormField) {
+					
+				} else if(fileItem.getContentType()=="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"){
+					out.println("<td>file form field</td><td>FIELD NAME: " + fileItem.getFieldName() +
+							
+							"<br/>NAME: " + fileItem.getName() +
+							"<br/>CONTENT TYPE: " + fileItem.getContentType() +
+							"<br/>SIZE (BYTES): " + fileItem.getSize() +
+							"<br/>TO STRING: " + fileItem.toString()
+							);
+					out.println("</td>");
+				}
+				else{
+					
+				}
+				out.println("</tr>");
+			}
+			out.println("</table>");
+		} catch (FileUploadException e) {
+			e.printStackTrace();
+			RequestDispatcher ReqDis = request.getRequestDispatcher("Adminerror.jsp");
+			ReqDis.forward(request, response);
+		}
+	}
+}
+/*
+	static class read {
+		@SuppressWarnings({ "unchecked", "rawtypes" })
+
+		public static ArrayList readExcelFile(String fileName) throws Exception {
+
+			ArrayList cellArrayLisstHolder = new ArrayList();
+
+			POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(fileName));
+			HSSFWorkbook wb = new HSSFWorkbook(fs);
+			HSSFSheet sheet = wb.getSheetAt(0);
+
+			Iterator rows = sheet.rowIterator();
+			while (rows.hasNext()) {
+				HSSFRow row = (HSSFRow) rows.next();
+
+				Iterator cells = row.cellIterator();
+
+				ArrayList cellStoreArrayList = new ArrayList();
+				while (cells.hasNext()) {
+					HSSFCell cell = (HSSFCell) cells.next();
+					cellStoreArrayList.add(cell);
+					int cellType = cell.getCellType();
+					if (cellType == HSSFCell.CELL_TYPE_STRING) {
+						HSSFRichTextString strData = cell.getRichStringCellValue();
+						System.out.println("String data=" + strData.getString());
+					} else if (cellType == HSSFCell.CELL_TYPE_NUMERIC) {
+						double data = cell.getNumericCellValue();
+						System.out.println("Numeric data=" + data);
+					}
+				}
+				cellArrayLisstHolder.add(cellStoreArrayList);
+			}
+
+			return cellArrayLisstHolder;
+		}
+	}
+}
+*/

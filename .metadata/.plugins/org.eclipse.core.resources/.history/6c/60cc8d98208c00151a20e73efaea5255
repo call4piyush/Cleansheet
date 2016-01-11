@@ -1,0 +1,8 @@
+
+<%
+int j=Integer.parseInt(request.getParameter("no"));
+
+
+
+
+%>

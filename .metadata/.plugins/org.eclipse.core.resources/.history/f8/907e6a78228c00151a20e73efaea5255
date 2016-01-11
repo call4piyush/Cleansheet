@@ -1,0 +1,22 @@
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="com.DB.connection.Connect"%>
+
+<%
+int j=Integer.parseInt(request.getParameter("no"));
+String sql = "select * from `truckparam`  order by `capacity`";
+try{ 
+							 Connection con = Connect.getconnection();
+							 PreparedStatement ps=con.prepareStatement(sql);					 		 
+					 		 ResultSet rs = ps.executeQuery();
+		}catch(Exception e)
+				{
+				e.printStackTrace();
+				RequestDispatcher ReqDis = request.getRequestDispatcher("Adminerror.jsp");
+				ReqDis.forward(request, response);
+				}
+
+
+%>

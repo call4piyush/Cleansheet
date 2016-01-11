@@ -1,0 +1,12 @@
+127.0.0.1 - - [05/Nov/2015:16:10:29 +0530] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [05/Nov/2015:16:10:30 +0530] "GET /Cleansheet/ HTTP/1.1" 200 1178
+0:0:0:0:0:0:0:1 - - [05/Nov/2015:16:10:30 +0530] "GET /Cleansheet/js/jquery.min.js HTTP/1.1" 404 1005
+0:0:0:0:0:0:0:1 - - [05/Nov/2015:16:10:34 +0530] "GET /Cleansheet/home.jsp HTTP/1.1" 500 2629
+0:0:0:0:0:0:0:1 - - [05/Nov/2015:16:10:38 +0530] "GET /Cleansheet/Logout HTTP/1.1" 200 1178
+0:0:0:0:0:0:0:1 - - [05/Nov/2015:16:10:38 +0530] "GET /Cleansheet/js/jquery.min.js HTTP/1.1" 404 1005
+0:0:0:0:0:0:0:1 - - [05/Nov/2015:16:10:44 +0530] "POST /Cleansheet/Login HTTP/1.1" 200 1235
+0:0:0:0:0:0:0:1 - - [05/Nov/2015:16:10:44 +0530] "GET /Cleansheet/js/jquery.min.js HTTP/1.1" 404 1005
+0:0:0:0:0:0:0:1 - - [05/Nov/2015:16:11:02 +0530] "GET /Cleansheet/ HTTP/1.1" 200 1178
+0:0:0:0:0:0:0:1 - - [05/Nov/2015:16:11:03 +0530] "GET /Cleansheet/js/jquery.min.js HTTP/1.1" 404 1005
+0:0:0:0:0:0:0:1 - - [05/Nov/2015:16:11:08 +0530] "POST /Cleansheet/Login HTTP/1.1" 200 1235
+0:0:0:0:0:0:0:1 - - [05/Nov/2015:16:11:08 +0530] "GET /Cleansheet/js/jquery.min.js HTTP/1.1" 404 1005

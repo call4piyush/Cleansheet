@@ -1,0 +1,41 @@
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="com.DB.connection.Connect"%>
+
+<%
+int j=Integer.parseInt(request.getParameter("no"));
+for(int i=0;i<j;i++)
+{
+String typeofgood=request.getParameter("type");
+int salary=Integer.parseInt(request.getParameter("salary"));
+int bhatta=Integer.parseInt(request.getParameter("bhatta"));
+int month=Integer.parseInt(request.getParameter("month"));
+int roadtax=Integer.parseInt(request.getParameter("roadtax"));
+int permit=Integer.parseInt(request.getParameter(""));
+float insurance=Float.parseFloat(request.getParameter("insurance"));
+int admin=Integer.parseInt(request.getParameter("admin"));
+int tarpaulin=Integer.parseInt(request.getParameter("tarpaulin"));
+int profit=Integer.parseInt(request.getParameter("profit"));
+int loading=Integer.parseInt(request.getParameter("loading"));
+
+String sql1 = "Update `routeparam`  Set driver/cleaner salary="+salary+",driver/cleaner bhatta="+bhatta+",maintenancepermonth="+month+
+			",roadtaxyear="+roadtax+",roadpermityear="+permit+",insuranceaspercentageofvechiclecost="+insurance+",admin costs="+admin+",tarpaulin="+tarpaulin+",profitmargin="+profit+",loadingcharges="+loading
+			+"where typeofgood=?";
+		try{ 
+							Connection con = Connect.getconnection();
+							PreparedStatement ps=con.prepareStatement(sql1);		
+							ps.setString(1, typeofgood);			 		 
+					 		ps.executeUpdate();
+		}catch(Exception e)
+				{
+				e.printStackTrace();
+				RequestDispatcher ReqDis = request.getRequestDispatcher("Adminerror.jsp");
+				ReqDis.forward(request, response);
+				}
+}							
+							RequestDispatcher ReqDis = request.getRequestDispatcher("adminfixed.jsp");
+							ReqDis.forward(request, response);
+
+%>

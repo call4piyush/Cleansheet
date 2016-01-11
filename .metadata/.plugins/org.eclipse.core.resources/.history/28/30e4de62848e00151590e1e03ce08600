@@ -1,0 +1,124 @@
+package com.controllers;
+
+import java.io.File;
+import java.io.FileInputStream;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import java.util.ArrayList;
+
+import java.util.Iterator;
+import java.util.List;
+
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRichTextString;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.poifs.filesystem.POIFSFileSystem;
+
+import com.DB.connection.Connect;
+
+@SuppressWarnings("serial")
+public class UploadFreight extends HttpServlet {
+
+	@SuppressWarnings("rawtypes")
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+
+		DiskFileItemFactory fileitemfactory = new DiskFileItemFactory();
+		ServletFileUpload servletfileupload = new ServletFileUpload(fileitemfactory);
+		int empid = Integer.parseInt(request.getParameter("empid"));
+		try {
+			List items = servletfileupload.parseRequest(request);
+			Iterator it = items.iterator();
+			while (it.hasNext()) {
+				FileItem fileitem = (FileItem) it.next();
+
+				File file = new File("C:\\temp\\" + fileitem.getName());
+				fileitem.write(file);
+				/*
+				ArrayList dataHolder = read.readExcelFile(fileitem.getName());
+
+				Connection con = Connect.getconnection();
+				// System.out.println("Connection :"+con);
+
+				String jdbc_insert_sql = "INSERT INTO freightupload"
+						+ "(Emp_Id, Serial_No., Name, Zone, Serial, Name_of_TPTR, Vehicle_Type, Freight_Rate) VALUES"
+						+ "(?,?,?,?,?,?,?,?)";
+
+				PreparedStatement ps = con.prepareStatement(jdbc_insert_sql);
+				ArrayList cellStoreArrayList = null;
+				for (int i = 1; i < dataHolder.size(); i++) {
+					cellStoreArrayList = (ArrayList) dataHolder.get(i);
+					ps.setInt(1, empid);
+					ps.setString(2, ((HSSFCell) cellStoreArrayList.get(0)).toString());
+					ps.setString(3, ((HSSFCell) cellStoreArrayList.get(1)).toString());
+					ps.setString(4, ((HSSFCell) cellStoreArrayList.get(2)).toString());
+					ps.setString(5, ((HSSFCell) cellStoreArrayList.get(3)).toString());
+					ps.setString(6, ((HSSFCell) cellStoreArrayList.get(4)).toString());
+					ps.setString(7, ((HSSFCell) cellStoreArrayList.get(5)).toString());
+					ps.setString(8, ((HSSFCell) cellStoreArrayList.get(6)).toString());
+					ps.executeUpdate();
+				*/
+				}
+			
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+/*
+	static class read {
+		@SuppressWarnings({ "unchecked", "rawtypes" })
+
+		public static ArrayList readExcelFile(String fileName) throws Exception {
+
+			ArrayList cellArrayLisstHolder = new ArrayList();
+
+			POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(fileName));
+			HSSFWorkbook wb = new HSSFWorkbook(fs);
+			HSSFSheet sheet = wb.getSheetAt(0);
+
+			Iterator rows = sheet.rowIterator();
+			while (rows.hasNext()) {
+				HSSFRow row = (HSSFRow) rows.next();
+
+				Iterator cells = row.cellIterator();
+
+				ArrayList cellStoreArrayList = new ArrayList();
+				while (cells.hasNext()) {
+					HSSFCell cell = (HSSFCell) cells.next();
+					cellStoreArrayList.add(cell);
+					int cellType = cell.getCellType();
+					if (cellType == HSSFCell.CELL_TYPE_STRING) {
+						HSSFRichTextString strData = cell.getRichStringCellValue();
+						System.out.println("String data=" + strData.getString());
+					} else if (cellType == HSSFCell.CELL_TYPE_NUMERIC) {
+						double data = cell.getNumericCellValue();
+						System.out.println("Numeric data=" + data);
+					}
+				}
+				cellArrayLisstHolder.add(cellStoreArrayList);
+			}
+
+			return cellArrayLisstHolder;
+		}
+	}
+}
+*/

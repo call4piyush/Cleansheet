@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<context-param>
+		<description>Location to store uploaded file</description>
+		<param-name>file-upload</param-name>
+		<param-value>
+         C:\Program Files\Apache Software Foundation\Tomcat 8.0\webapps\data
+     </param-value>
+	</context-param>
+
+
+	<display-name>Cleansheet</display-name>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<servlet>
+		<servlet-name>Register</servlet-name>
+		<servlet-class>com.Register.Register</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Register</servlet-name>
+		<url-pattern>/Register</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Login</servlet-name>
+		<servlet-class>com.Login.Login</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/Login</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Basic</servlet-name>
+		<servlet-class>com.controllers.Basic</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Basic</servlet-name>
+		<url-pattern>/Basic</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Advanced</servlet-name>
+		<servlet-class>com.controllers.Advanced</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Advanced</servlet-name>
+		<url-pattern>/Advanced</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Auto</servlet-name>
+		<servlet-class>com.controllers.Auto</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Auto</servlet-name>
+		<url-pattern>/Auto</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Logout</servlet-name>
+		<servlet-class>com.Logout.Logout</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Logout</servlet-name>
+		<url-pattern>/Logout</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UploadFreight</servlet-name>
+		<servlet-class>com.controllers.UploadFreight</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UploadFreight</servlet-name>
+		<url-pattern>/UploadFreight</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UploadContract</servlet-name>
+		<servlet-class>com.controllers.UploadContract</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UploadContract</servlet-name>
+		<url-pattern>/UploadContract</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Param</servlet-name>
+		<servlet-class>com.controllers.Param</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Param</servlet-name>
+		<url-pattern>/Param</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Update</servlet-name>
+		<servlet-class>com.controllers.ModifyParam</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Update</servlet-name>
+		<url-pattern>/Update</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Add</servlet-name>
+		<servlet-class>com.controllers.Add</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Add</servlet-name>
+		<url-pattern>/Add</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Loc</servlet-name>
+		<servlet-class>com.controllers.Location</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Loc</servlet-name>
+		<url-pattern>/Loc</url-pattern>
+	</servlet-mapping>
+
+
+</web-app>

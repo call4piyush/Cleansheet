@@ -1,0 +1,159 @@
+package com.controllers;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.poi.hssf.util.HSSFColor.GOLD;
+
+import com.DB.connection.Connect;
+
+
+public class Location extends HttpServlet {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.setContentType("text/html");
+		int empid = Integer.parseInt(request.getParameter("empid"));
+		try {
+			HttpSession session = request.getSession();
+			NearbyLocations(request,session,response);
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+			if(empid==11){
+				RequestDispatcher ReqDis = request.getRequestDispatcher("Adminerror.jsp");
+				ReqDis.forward(request, response);
+					
+			}else{RequestDispatcher ReqDis = request.getRequestDispatcher("error.jsp");
+			ReqDis.forward(request, response);}
+		}
+	}
+
+	@SuppressWarnings({ "null", "unused" })
+	private void NearbyLocations(HttpServletRequest request, HttpSession session, HttpServletResponse response) throws ServletException, IOException, SQLException {
+		float distance = Float.parseFloat(request.getParameter("distance"));
+		int empid = Integer.parseInt(request.getParameter("empid"));
+		//int cap = Integer.parseInt(request.getParameter("cap"));
+		String truckType=request.getParameter("Capacity");
+		String type = request.getParameter("good");
+		String start = request.getParameter("start");
+		String end = request.getParameter("end");
+		
+		session.setAttribute("start", start);
+		session.setAttribute("end", end);
+		//session.setAttribute("cap", cap);
+						
+		//int area=Integer.parseInt(request.getParameter("area"));
+		double lat=Double.parseDouble(request.getParameter("lat"));
+		double lon=Double.parseDouble(request.getParameter("long"));
+		
+		double lat1=0,lon1=0;
+		String origin= null;
+		
+		Connection con=Connect.getconnection();
+		
+		PreparedStatement ps = con.prepareStatement("SELECT * FROM mckc.autoparam WHERE `typeofgood`= ? order by lat");
+		ps.setString(1, truckType);
+		ResultSet rs =ps.executeQuery();
+		
+		while (rs.next()) {
+			lat1=rs.getDouble("lat");
+			lon1=rs.getDouble("long");
+			float dist=calculateDistance(lat,lon,lat1,lon1);
+			
+			PreparedStatement ps1 = con.prepareStatement("UPDATE mckc.autoparam SET `distance`=? WHERE `typeofgood`=? And `lat`=? And `long`=?");
+			ps1.setFloat(1, dist);
+			ps1.setString(2, truckType);
+			ps1.setDouble(3, lat1);
+			ps1.setDouble(4, lon1);
+			ps1.executeUpdate();
+		}
+		
+		float dista = 0;
+		PreparedStatement ps2 = con.prepareStatement("SELECT * FROM mckc.autoparam a, priorityslab p WHERE p.Pirority=a.Pirority and a.typeofgood=? order by distance");
+		ps2.setString(1, truckType);
+		ResultSet rset =ps2.executeQuery();
+						
+		while (rset.next()) 
+		{
+			
+			if(rset.getInt("a.Pirority")==1)
+			{
+				dista=rset.getFloat("distance");
+				if(dista>=rset.getInt("p.Min Distance")&&dista<=rset.getInt("p.Max Distance"))
+				{
+					origin=rset.getString("a.Origin");
+					System.out.println(origin);	
+					break;
+				}
+			}
+			else if(rset.getInt("a.Pirority")==2)	
+			{
+				dista=rset.getFloat("distance");
+				if(dista>=rset.getInt("p.Min Distance")&&dista<=rset.getInt("p.Max Distance"))
+				{
+					origin=rset.getString("Origin");
+					System.out.println(origin);	
+					break;
+				}				
+			}
+			else if(rset.getInt("a.Pirority")==3)	
+			{
+				dista=rset.getFloat("distance");
+				if(dista>=rset.getInt("p.Min Distance")&&dista<=rset.getInt("p.Max Distance"))
+				{
+					origin=rset.getString("Origin");
+					System.out.println(origin);	
+					break;
+				}
+			}
+			else 
+			{				
+				if(rset.getInt("a.Pirority")==1){
+					origin=rset.getString("Origin");
+					dista=rset.getFloat("distance");
+					System.out.println(origin);
+					break;
+				}
+			}
+		}
+		System.out.println(origin);
+		session.setAttribute("distance", distance+dista);
+		session.setAttribute("backstart", origin);
+		
+		
+			//RequestDispatcher ReqDis = request.getRequestDispatcher("Auto");
+			//ReqDis.forward(request,response);
+	
+}
+
+
+	@SuppressWarnings("unused")
+	private float calculateDistance(double lat, double lon, double lat0, double lon0) {
+		float lat1=(float) lat;
+		float lon1=(float) lon;
+		float lat2=(float) lat0;
+		float lon2=(float) lon0;
+			
+		float radlat1 = (float) (Math.PI * lat1/180);
+		float radlat2 = (float) (Math.PI * lat2/180);
+		float radlon1 = (float) (Math.PI * lon1/180);
+		float radlon2 = (float) (Math.PI * lon2/180);
+		float theta = lon1-lon2;
+		float radtheta = (float) (Math.PI * theta/180);
+		float dist = (float) (Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta));
+		dist = (float) Math.acos(dist);
+		dist = (float) (dist * 180/Math.PI);
+		dist = (float) (dist * 60 * 1.1515 * 1.609344);
+		return dist;
+	}
+}

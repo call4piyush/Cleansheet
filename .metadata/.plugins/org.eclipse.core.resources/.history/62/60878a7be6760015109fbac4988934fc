@@ -1,0 +1,167 @@
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="com.DB.connection.Connect"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"
+%>
+<% 	 if(null==((String) session.getAttribute("empid")) )
+        {
+            response.sendRedirect("index.jsp");
+            return;
+        }
+ %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet" href="css/homestyle.css">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Variable Cost</title>
+<script type="text/javascript">
+function myFunction() {
+    location.reload();
+}
+function clickadd()
+{
+document.getElementById('add').style.visibility = 'hidden';
+document.getElementById('del').style.visibility = 'hidden';
+document.getElementById('modify').style.visibility = 'hidden';
+document.getElementById('refresh').style.visibility = 'hidden';
+document.getElementById('1').style.visibility = 'visible';
+document.getElementById('2').style.visibility = 'visible';
+}
+</script>
+<link rel="stylesheet" href="./css/styles.css" type="text/css">
+</head>
+<body>
+	<%String name = request.getParameter( "name" );
+	 %>
+	<div class="card">
+		<header>
+		<h1>CLEANSHEET</h1>
+		</header>
+		<p>
+			Hello,
+			<%= session.getAttribute( "name" ) %>
+			<a style="float: right;" href="Logout">Logout</a>
+		</p>
+		<nav> <a href="Auto.jsp">Auto</a> <br>
+		<a href="home.jsp">Classic</a> <br>
+		<a href="Advanced.jsp">Advanced</a> <br>
+		<a href="Param.jsp">Control Panel</a>
+		<ul type="circle" compact="true">
+			<li><a href="Capex.jsp"> Capex</a></li>
+			<li><a href="fixed.jsp"> Fixed Cost</a></li>
+			<li><a href="variable.jsp"> Variable Cost</a></li>
+			<li><a href="trip.jsp"> Trip Matrix</a></li>
+		</ul>
+		<a href="uploadFreight.jsp">Upload Freight</a> <br>
+		<a href="uploadContract.jsp">Upload Contract</a> <br>
+		</nav>
+		<section style="width:79%">
+		<div class="login-card">
+			<h2 align="center">Control Panel</h2>
+			<form action="Param" method="post">
+				<h2 style="" align="center">Variable Cost</h2>
+				<table>
+					<tr>
+						<td>Truck Type</td>
+						<td>Tyre life (Km)</td>
+						<td>Tyre life (Retredded tyre) (Km)</td>
+						<td>Tyre Cost (INR)</td>
+						<td>Tyre Cost (Retredded tyre) (INR)</td>
+						<td>No. of tyres</td>
+						<td>Diesel Cost</td>
+						<td>Diesel Milage Km/L</td>
+						<td>Diesel Mileage (With Load) Km/L</td>
+						<td>Toll per km</td>
+						<td>Route expenses per km</td>
+						<td>Maintanence cost per km</td>
+					</tr>
+					<%
+			int empid=Integer.parseInt((String)session.getAttribute("empid"));
+		 	String sql = "select * from `routeparam`  where `Emp_id`="+empid+" order by `capacity`";
+			 
+				try{ 
+							 Connection con = Connect.getconnection();
+							 PreparedStatement ps=con.prepareStatement(sql);					 		 
+					 		 ResultSet rs = ps.executeQuery();
+					               while( rs.next() )
+					 		 {
+							 	%>
+					<tr>
+						<td><input type="text" readonly="readonly" value='<%=rs.getString("capacity")%>'></td>
+						<td><input type="text" readonly="readonly" value='<%=rs.getString("capacity")%>'></td>
+						<td><input type="text" readonly="readonly" value='<%=rs.getString("capacity")%>'></td>
+						<td><input type="text" readonly="readonly" value='<%=rs.getString("capacity")%>'></td>
+						<td><input type="text" readonly="readonly" value='<%=rs.getString("capacity")%>'></td>
+						<td><input type="text" readonly="readonly" value='<%=rs.getString("capacity")%>'></td>
+						<td><input type="text" readonly="readonly" value='<%=rs.getString("capacity")%>'></td>
+						<td><input type="text" readonly="readonly" value='<%=rs.getString("capacity")%>'></td>
+						<td><input type="text" readonly="readonly" value='<%=rs.getString("capacity")%>'></td>
+						<td><input type="text" readonly="readonly" value='<%=rs.getString("capacity")%>'></td>
+						<td><input type="text" readonly="readonly" value='<%=rs.getString("capacity")%>'></td>
+						<td><input type="text" readonly="readonly" value='<%=rs.getString("capacity")%>'></td>
+					</tr>
+					<%
+					 		}
+			
+					            	
+				}
+				catch(Exception e){
+					e.printStackTrace();
+					RequestDispatcher ReqDis = request.getRequestDispatcher("error.jsp");
+				ReqDis.forward(request, response);
+				}
+		%>	<tr id=1 style="visibility: hidden;">
+						<td><input type="text" name="truckType" required></td>
+						<td><input type="text" name="costoftruck" required></td>
+						<td><input type="text" name="residual" required></td>
+						<td><input type="text" name="loan" required></td>
+						<td><input type="text" name="emi" required></td>
+						<td><input type="text" name="roi" required></td>
+						<td><input type="text" name="flatroi" required></td>
+						<td><input type="text" name="insurance" required></td>
+						<td><input type="text" name="insurance" required></td>
+						<td><input type="text" name="insurance" required></td>
+						<td><input type="text" name="insurance" required></td>
+						<td><input type="text" name="insurance" required></td>
+					</tr>
+					<tr id="2" style="visibility: hidden;">
+						<td colspan="4"></td>
+						<td colspan="2"><center>
+								<input type="hidden" value='<%=session.getAttribute("empid")%>'
+									name="empid"
+								> <input type="submit" name="submit" value="Submit"
+									class="login login-submit"
+								>
+								
+							</center></td>
+							<td colspan="2"><center>
+								
+								<input type="button" onclick="myFunction()" value="Cancel"
+									class="login login-submit"
+								>
+							</center></td>
+							
+						<td colspan="4">
+					</tr>
+					<tr>
+		<td colspan="2"><input type="button" value="Add" name="add" id="add" class="login login-submit" onclick="clickadd()">
+		</td>
+		<td colspan="1"></td>
+		<td colspan="2"><input type="button" value="Modify" name="modify" id="modify" class="login login-submit" onclick=""></td>
+		<td colspan="2"></td>
+		<td colspan="2"><input type="button" value="Delete" name="del" id="del" class="login login-submit" onclick=""></td>
+		<td colspan="1"></td>
+		<td colspan="2"><input type="button" value="Refresh" name="refresh" id="refresh" class="login login-submit" onclick="myFunction()"></td>
+		</tr>
+				</table>
+			</form>
+		</section>
+		<footer style="position:  relative;"> Copyright © McKinsey &
+		Company </footer>
+	</div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"
+%>
+<% 	 if(null==((String) session.getAttribute("empid")) )
+        {
+            response.sendRedirect("index.jsp");
+            return;
+        }
+ %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Add Locations</title>
+<script type="text/javascript"
+	src="http://maps.google.com/maps/api/js?sensor=false"
+></script>
+<script language="javascript" type="text/javascript" src="js/latlong.js"></script>
+<link rel="stylesheet" href="css/homestyle.css">
+<link rel="stylesheet" href="./css/styles.css" type="text/css">
+</head>
+<body>
+	<%String name = request.getParameter( "name" );
+	 %>
+	<div class="card">
+		<header>
+		<h1>CLEANSHEET</h1>
+		</header>
+		<p>
+			Hello,
+			<%= session.getAttribute( "name" ) %>
+			<a style="float: right;" href="Logout">Logout</a>
+		</p>
+		<nav > <a href="Auto.jsp">Auto</a>
+		<br>
+		<a href="home.jsp">Classic</a> <br>
+		<a href="Advanced.jsp">Advanced</a> <br>
+		<a href="Param.jsp">Control Panel</a> <br>
+		<a href="uploadFreight.jsp">Upload Freight</a> <br>
+		<a href="uploadContract.jsp">Upload Contract</a> <br>
+		</nav>
+		<section style="width:79%">
+		<div class="login-card">
+			<center>
+				<h2>Add Locations</h2>
+			</center>
+			<form action="Add" method="post">
+				<table align="center" style="width: 35%">
+					<tr>
+						<td ><input type="text" name="location"
+							id="location" placeholder="Enter Location" onchange="calcLat()"
+							required
+						></td>
+					</tr>
+					<tr>
+						<td >Loading capacity(In Tons)</td>
+						<td ><select name='cap'
+							style='font-family: Palatino Linotype'
+						>
+								
+							<option value="21" name='cap' style='font-family:Palatino Linotype'>21</option>
+						
+				
+						</select></td>
+					</tr>
+					<tr>
+						<td ><input type="hidden" name="lat" id="lat">
+							<input type="hidden" name="long" id="long"> <input
+							type="hidden" value='<%=session.getAttribute("empid")%>'
+							name="empid"
+						>
+							<center>
+								<input type="submit" name="submit" class="login login-submit"
+									value="Submit"
+								>
+							</center></td>
+					</tr>
+				</table>
+				<br>
+			</form>
+			<center>
+				<font size="4">
+					<p id="1234" align="center" style="width: 40%"></p>
+				</font>
+			</center>
+		</div>
+		</section>
+		<br> <br> <br>
+		<footer style="position:  relative;"> Copyright © McKinsey &
+		Company </footer>
+	</div>
+</body>
+</html>

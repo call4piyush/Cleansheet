@@ -1,0 +1,72 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"
+%>
+<% 	 if(null==((String) session.getAttribute("empid")) )
+        {
+            response.sendRedirect("index.jsp");
+            return;
+        }
+ %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Upload Freight</title>
+<link rel="stylesheet" href="css/homestyle.css">
+<link rel="stylesheet" href="./css/styles.css" type="text/css">
+</head>
+<body>
+	<div class="card">
+		<%String name = request.getParameter( "name" );
+	 %>
+		<header>
+		<h1>CLEANSHEET</h1>
+		</header>
+		<p>
+			Hello,
+			<%= session.getAttribute( "name" ) %>
+			<a style="float: right;" href="Logout">Logout</a>
+		</p>
+		<nav> <a href="Auto.jsp">Auto</a> <br>
+		<a href="home.jsp">Classic</a> <br>
+		<a href="Advanced.jsp">Advanced</a> <br>
+		<a href="Param.jsp">Control Panel</a> <br>
+		<a href="uploadFreight.jsp">Upload Freight</a> <br>
+		<a href="uploadContract.jsp">Upload Contract</a> <br>
+		</nav>
+		<section style="width:79%">
+		<center>
+			<h2>Upload Freight</h2>
+			<form action="UploadFreight" method="post"
+				enctype="multipart/form-data"
+			>
+				<table>
+					<tr>
+						<td align="center">Please Upload The File(.xlsx):</td>
+					</tr>
+					<tr>
+						<td align="center"><input type="file" name="file" id="file"
+							accept=".xls,.xlsx" class="login login-submit"
+							style="background: white; color: black;"
+						></td>
+					</tr>
+					<tr>
+						<td colspan="2"><center>
+								<input type="hidden" value='<%=session.getAttribute("empid")%>'
+									name="empid"
+								><input type="submit" name="submit" class="login login-submit"
+									value="Upload"
+								>
+							</center></td>
+					</tr>
+				</table>
+			</form>
+		</center>
+		</section>
+		<footer style="position:  relative;"> Copyright &copy
+		McKinsey & Company </footer>
+	</div>
+</body>
+</html>
+</body>
+</html>

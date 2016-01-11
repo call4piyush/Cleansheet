@@ -1,0 +1,50 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"
+%>
+<% 	 if ( (String)session.getAttribute("empid")== null) 
+        {
+           response.sendRedirect("index.jsp");
+           return;
+        }else{
+ %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet" href="css/homestyle.css">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Control Panel</title>
+<link rel="stylesheet" href="./css/styles.css" type="text/css">
+</head>
+<body>
+	<%String name = request.getParameter( "name" );
+	 %>
+	<div class="card">
+		<header>
+		<h1>CLEANSHEET</h1>
+		</header>
+		<p>
+			Hello,
+			<%= session.getAttribute( "name" ) %>
+			<a style="float: right;" href="Logout">Logout</a>
+		</p>
+		<%response.sendRedirect("Capex.jsp"); %>
+		<nav> <a href="Auto.jsp">Auto</a> <br>
+		<a href="home.jsp">Classic</a> <br>
+		<a href="Advanced.jsp">Advanced</a> <br>
+		<a href="Param.jsp">Control Panel</a>
+		<ul type="circle" compact="true">
+			<li><a href="Capex.jsp"> Capex</a></li>
+			<li><a href="fixed.jsp"> Fixed Cost</a></li>
+			<li><a href="variable.jsp"> Variable Cost</a></li>
+			<li><a href="trip.jsp"> Trip Matrix</a></li>
+		</ul>
+		<a href="uploadFreight.jsp">Upload Freight</a> <br>
+		<a href="uploadContract.jsp">Upload Contract</a> <br>
+		</nav>
+		<section style="width:79%"> </section>
+		<footer style="position:  relative;"> Copyright © McKinsey &
+		Company </footer>
+	</div>
+</body>
+</html>
+<%}%>

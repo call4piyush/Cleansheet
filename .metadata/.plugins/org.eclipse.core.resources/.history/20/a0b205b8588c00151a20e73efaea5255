@@ -1,0 +1,39 @@
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="com.DB.connection.Connect"%>
+
+<%
+int j=Integer.parseInt(request.getParameter("no"));
+for(int i=0;i<j;i++)
+{
+String typeofgood=request.getParameter("type");
+int tyrelife=Integer.parseInt(request.getParameter("tyrelife"));
+int reusedtyrelife=Integer.parseInt(request.getParameter("usedtyrelife"));
+int tyrecost=Integer.parseInt(request.getParameter("tyrecost"));
+int reusedtyrecost=Integer.parseInt(request.getParameter("usedtyrecost"));
+int tyres=Integer.parseInt(request.getParameter("tyres"));
+float diesel=Float.parseFloat(request.getParameter("diesel"));
+float mileage=Float.parseFloat(request.getParameter("mileage"));
+float mileagewithload=Float.parseFloat(request.getParameter("mileagewithload"));
+float toll=Float.parseFloat(request.getParameter("toll"));
+float routeexpense=Float.parseFloat(request.getParameter("routeexpense"));
+float maintenance=Float.parseFloat(request.getParameter("maintenance"));
+String sql="";
+try{
+							Connection con = Connect.getconnection();
+							PreparedStatement ps=con.prepareStatement(sql);
+							ps.executeUpdate();
+
+}catch(Exception e)
+				{
+				e.printStackTrace();
+				RequestDispatcher ReqDis = request.getRequestDispatcher("Adminerror.jsp");
+				ReqDis.forward(request, response);
+				}
+}							
+							RequestDispatcher ReqDis = request.getRequestDispatcher("adminvariable.jsp");
+							ReqDis.forward(request, response);
+
+%>

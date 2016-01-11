@@ -1,0 +1,120 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>AUTO</title>
+<script type="text/javascript"
+	src="http://maps.google.com/maps/api/js?sensor=false"
+></script>
+<script language="javascript" type="text/javascript" src="js/Map.js"></script>
+<script language="javascript" type="text/javascript"
+	src="js/latlong1.js"
+></script>
+<link rel="stylesheet" href="./css/homestyle.css">
+<link rel="stylesheet" href="./css/styles.css" type="text/css">
+</head>
+<body onload="initialize()">
+	<%String name = request.getParameter( "name" );
+	 %>
+	<div class="card">
+		<header>
+		<h1>CLEANSHEET</h1>
+		</header>
+		<p>
+			Hello,
+			<%= session.getAttribute( "name" ) %>
+			<a style="float: right;" href="Logout">Logout</a>
+		</p>
+		<nav style="opacity:1"> <a href="Auto.jsp">Auto</a> <br>
+		<a href="home.jsp">Classic</a> <br>
+		<a href="Advanced.jsp">Advanced</a> <br>
+		<a href="Param.jsp">Control Panel</a> <br>
+		<a href="uploadFreight.jsp">Upload Freight</a> <br>
+		<a href="uploadContract.jsp">Upload Contract</a> <br>
+		</nav>
+		<section>
+		<div class="login-card">
+			<center>
+				<h2>Auto</h2>
+			</center>
+			<form action="Loc" method="post">
+				<table align="center">
+					<tr>
+						<td><input type="text" name="start" id="start"
+							placeholder="Origin" onchange="calcRoute()" required
+						></td>
+						<td><input type="text" name="end" id="end"
+							placeholder="Destination" onblur="calcLat()"
+							onchange="calcRoute()" required
+						></td>
+					</tr>
+					<tr>
+						<td>Truck/Trailer<br>Capacity(In Tons)
+						</td>
+						<td><select name='Capacity'
+							style='font-family: Palatino Linotype'
+						><option value="21" name="Capacity"
+									style='font-family: Palatino Linotype'
+								>21</option>
+								<!--<% //for(int i=9;i<34;i++)
+						{
+							//out.write("<option value="+i+" name="+i+" style='font-family:Palatino Linotype'>"+i+"</option><br>");
+						
+						} %>-->
+						</select></td>
+					</tr>
+					<tr>
+						<td>BackHaul Origin Distance<br>Radius(In Km)
+						</td>
+						<td><select name='area'
+							style='font-family: Palatino Linotype'
+						>
+								<option value="50" name="area">50</option>
+								<option value="100" name="area">100</option>
+								<option value="150" name="area">150</option>
+								<option value="200" name="area">200</option>
+								<option value="250" name="area">250</option>
+								<option value="300" name="area">300</option>
+								<option value="350" name="area">350</option>
+								<option value="400" name="area">400</option>
+								<option value="450" name="area">450</option>
+								<option value="500" name="area">500</option></td>
+					</tr>
+					<tr>
+						<td><a href="add.jsp">
+								<center>
+									<input type="button" value="Add Locations"
+										class="login login-submit" name="modify"
+									>
+								</center>
+						</a></td>
+						<td><input type="hidden" name="distance" id="distance">
+							<input type="hidden" name="lat" id="lat"> <input
+							type="hidden" name="long" id="long"
+						> <input type="hidden"
+							value='<%=session.getAttribute("empid")%>' name="empid"
+						>
+							<center>
+								<input type="submit" name="submit" class="login login-submit"
+									value="Submit"
+								>
+							</center></td>
+					</tr>
+				</table>
+				<br>
+			</form>
+			<font size="4">
+				<p id="1234"></p>
+			</font>
+		</div>
+		</section>
+		<div id="map_canvas" class="right" style="height: 47%"></div>
+		<br> <br> <br>
+		<footer style="position:  relative;%"> Copyright © McKinsey &
+		Company </footer>
+	</div>
+</body>
+</html>

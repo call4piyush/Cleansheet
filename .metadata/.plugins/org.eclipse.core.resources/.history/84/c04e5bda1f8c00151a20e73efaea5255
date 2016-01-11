@@ -1,0 +1,8 @@
+
+<%
+int j=request.getParameter("no");
+
+
+
+
+%>
