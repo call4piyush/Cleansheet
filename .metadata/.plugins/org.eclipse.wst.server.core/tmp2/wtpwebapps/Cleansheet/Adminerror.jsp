@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
-%>
+	pageEncoding="ISO-8859-1"%>
 <%  	 
 		if(request.getSession().getAttribute("empid")==null)
         {      request.getRequestDispatcher("index.jsp").forward(request, response);   
@@ -32,8 +31,8 @@
 				<li class="active"><a href="admin.jsp">Classic</a></li>
 				<li class="active"><a href="adminAdvanced.jsp">Advanced</a></li>
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"
-				>Control Panel<span class="caret"></span></a>
+					data-toggle="dropdown" href="#">Control Panel<span
+						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="adminCapex.jsp">Capex</a></li>
 						<li><a href="adminfixed.jsp">Fixed Cost</a></li>
@@ -58,8 +57,8 @@
 			</h2>
 		</div>
 		<footer class="panel-footer"
-			style=" bottom:2%; text-align:center; color:white;position:  relative; "
-		> Copyright © McKinsey & Company</footer> </section>
+			style=" bottom:2%; text-align:center; color:white;position:  relative; ">
+		Copyright © McKinsey & Company</footer> </section>
 	</div>
 </body>
 </html>

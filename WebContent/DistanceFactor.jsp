@@ -54,8 +54,8 @@ function myFunction() {
 				<li class="active"><a href="admin.jsp">Classic</a></li>
 				<li class="active"><a href="adminAdvanced.jsp">Advanced</a></li>
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"
-				>Control Panel<span class="caret"></span></a>
+					data-toggle="dropdown" href="#">Control Panel<span
+						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="adminCapex.jsp">Capex</a></li>
 						<li><a href="adminfixed.jsp">Fixed Cost</a></li>
@@ -68,8 +68,8 @@ function myFunction() {
 				<li class="active"><a href="adminUploadFreight.jsp">Upload
 						Freight</a></li>
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"
-				>Contract<span class="caret"></span></a>
+					data-toggle="dropdown" href="#">Contract<span
+						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="adminContract.jsp">View Contract</a></li>
 						<li><a href="adminUploadContract.jsp">Upload Contract</a></li>
@@ -79,8 +79,9 @@ function myFunction() {
 				<li class="active"><a href="adminHelp.jsp">Help/FAQs</a></li>
 				<li class="active"></li>
 			</ul>
-			
-		</div></nav>
+
+		</div>
+		</nav>
 		<section style="width:100%">
 		<div class="login-card">
 			<h5 align="center" style="font-weight: bold; padding: 1%">
@@ -88,7 +89,8 @@ function myFunction() {
 			</h5>
 			<form action="slab.jsp" method="post">
 				<div class="table-responsive">
-					<table class="table table-hover table-condensed" style="text-align: center;">
+					<table class="table table-hover table-condensed"
+						style="text-align: center;">
 						<thead>
 							<tr>
 								<th>Slab No.</th>
@@ -109,16 +111,13 @@ function myFunction() {
 						<tbody>
 							<tr>
 								<td align="justify"><input type="text"
-									value='<%= rs.getString("SNO") %>' readonly
-								></td>
+									value='<%= rs.getString("SNO") %>' readonly></td>
 								<td align="justify"><input type="text"
-									value='<%= rs.getString("STATE") %>' readonly
-								></td>
+									value='<%= rs.getString("STATE") %>' readonly></td>
 								<td align="justify"><input type="text"
-									value='<%= rs.getFloat("DistanceFactor") %>' readonly
-								></td>
-								
-								
+									value='<%= rs.getFloat("DistanceFactor") %>' readonly></td>
+
+
 							</tr>
 						</tbody>
 						<%
@@ -133,24 +132,21 @@ function myFunction() {
 				}
 		%>
 						</tr>
-						
-					
+
+
 					</table>
 				</div>
 				<div class="table-responsive">
 					<table class="table" style="text-align: center;">
 						<tr>
-						
 						<thead>
 							<td align="center"><a href="modifyDistance.jsp"><input
 									type="button" value="Modify" name="modify" id="modify"
-									class="login login-submit btn btn-primary active"
-								></a></td>
-							
+									class="login login-submit btn btn-primary active"></a></td>
+
 							<td align="center"><input type="button" value="Refresh"
 								name="refresh" id="refresh"
-								class="login login-submit btn btn-primary active"
-							></td>
+								class="login login-submit btn btn-primary active"></td>
 							</tr>
 						</thead>
 					</table>
@@ -158,8 +154,8 @@ function myFunction() {
 		</section>
 		<div class="panel-body"></div>
 		<footer class="panel-footer"
-			style=" bottom:2%; text-align:center; color:white;position:  relative; "
-		> Copyright &copy McKinsey & Company</footer>
+			style=" bottom:2%; text-align:center; color:white;position:  relative; ">
+		Copyright &copy McKinsey & Company</footer>
 	</div>
 </body>
 </html>

@@ -4,8 +4,7 @@
 <%@page import="java.sql.SQLException"%>
 <%@page import="com.DB.connection.Connect"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
-%>
+	pageEncoding="ISO-8859-1"%>
 <%  	 
 		if(request.getSession().getAttribute("empid")==null)
         {      request.getRequestDispatcher("index.jsp").forward(request, response);   
@@ -44,8 +43,8 @@
 				<li class="active"><a href="admin.jsp">Classic</a></li>
 				<li class="active"><a href="adminAdvanced.jsp">Advanced</a></li>
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"
-				>Control Panel<span class="caret"></span></a>
+					data-toggle="dropdown" href="#">Control Panel<span
+						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="adminCapex.jsp">Capex</a></li>
 						<li><a href="adminfixed.jsp">Fixed Cost</a></li>
@@ -100,44 +99,31 @@
 						<tr>
 						<tbody>
 							<td><input type="checkbox" name='check' value='<%=i %>'
-								class="checkbox"
-							></td>
+								class="checkbox"></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getString("typeofgood")%>'
-							></td>
+								value='<%=rs.getString("typeofgood")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getInt("tyrelife")%>'
-							></td>
+								value='<%=rs.getInt("tyrelife")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getInt("reusedtyrelife")%>'
-							></td>
+								value='<%=rs.getInt("reusedtyrelife")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getInt("tyrecost")%>'
-							></td>
+								value='<%=rs.getInt("tyrecost")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getInt("reusedtyrecost")%>'
-							></td>
+								value='<%=rs.getInt("reusedtyrecost")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getInt("tyres")%>'
-							></td>
+								value='<%=rs.getInt("tyres")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getFloat("dieselcost")%>'
-							></td>
+								value='<%=rs.getFloat("dieselcost")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getFloat("dieselmileage")%>'
-							></td>
+								value='<%=rs.getFloat("dieselmileage")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getFloat("diesealmileagewithload")%>'
-							></td>
+								value='<%=rs.getFloat("diesealmileagewithload")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getFloat("toll")%>'
-							></td>
+								value='<%=rs.getFloat("toll")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getFloat("routeexpenses")%>'
-							></td>
+								value='<%=rs.getFloat("routeexpenses")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getFloat("maintenancecostperkm")%>'
-							></td>
+								value='<%=rs.getFloat("maintenancecostperkm")%>'></td>
 							</tr>
 						</tbody>
 						<%
@@ -160,16 +146,14 @@
 							<td></td>
 							<td><center>
 									<input type="hidden" value='<%=session.getAttribute("empid")%>'
-										name="empid"
-									> <input type="submit" name="submit" value="Submit"
-										class="login login-submit btn btn-primary active"
-									>
+										name="empid"> <input type="submit"
+										name="submit" value="Submit"
+										class="login login-submit btn btn-primary active">
 								</center></td>
 							<td><center>
 									<a href="adminvariable.jsp"><input type="button"
 										value="Cancel"
-										class="login login-submit btn btn-primary active"
-									></a>
+										class="login login-submit btn btn-primary active"></a>
 								</center></td>
 							<td></td>
 						</tr>
@@ -179,8 +163,8 @@
 		</section>
 		<div class="panel-body"></div>
 		<footer class="panel-footer"
-			style=" bottom:2%; text-align:center; color:white;position:  relative; "
-		> Copyright &copy McKinsey & Company</footer>
+			style=" bottom:2%; text-align:center; color:white;position:  relative; ">
+		Copyright &copy McKinsey & Company</footer>
 	</div>
 </body>
 </html>

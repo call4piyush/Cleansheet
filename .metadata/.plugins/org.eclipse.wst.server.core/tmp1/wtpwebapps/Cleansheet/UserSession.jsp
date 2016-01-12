@@ -32,8 +32,8 @@
 				<li class="active"><a href="admin.jsp">Classic</a></li>
 				<li class="active"><a href="adminAdvanced.jsp">Advanced</a></li>
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"
-				>Control Panel<span class="caret"></span></a>
+					data-toggle="dropdown" href="#">Control Panel<span
+						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="adminCapex.jsp">Capex</a></li>
 						<li><a href="adminfixed.jsp">Fixed Cost</a></li>
@@ -54,8 +54,7 @@
 			<h2>User Session</h2>
 			<div class="table-responsive">
 				<table align="center" class="table-condensed table"
-					style="text-align: center;"
-				>
+					style="text-align: center;">
 					<thead>
 						<tr>
 							<th style="text-align: center;">Employee Id</th>
@@ -95,8 +94,8 @@
 		</section>
 		<div class="panel-body"></div>
 		<footer class="panel-footer"
-			style=" bottom:2%; text-align:center; color:white;position:  relative; "
-		> Copyright &copy McKinsey & Company</footer>
+			style=" bottom:2%; text-align:center; color:white;position:  relative; ">
+		Copyright &copy McKinsey & Company</footer>
 	</div>
 </body>
 </html>

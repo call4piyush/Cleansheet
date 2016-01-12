@@ -7,16 +7,15 @@
 <%@page import="java.text.DecimalFormatSymbols"%>
 <%@page import="java.util.Locale"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
-%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 </head>
 <body>
 	<h5
-		style="font-weight: bold; text-align: center; background-color: #96CBFF; padding: 1%"
-	>Key cleansheet assumptions</h5>
+		style="font-weight: bold; text-align: center; background-color: #96CBFF; padding: 1%">Key
+		cleansheet assumptions</h5>
 	<% 
 					DecimalFormat df = new DecimalFormat("##,###", new DecimalFormatSymbols(Locale.US));
 							try{
@@ -35,8 +34,7 @@
 		</tr>
 		<tr>
 			<th colspan="2"
-				style="text-transform: uppercase; font-style: bold; background-color: #337ab7; color: white;"
-			>CAPEX</th>
+				style="text-transform: uppercase; font-style: bold; background-color: #337ab7; color: white;">CAPEX</th>
 		</tr>
 		<tr>
 			<th>Cost of truck (INR):</th>
@@ -52,8 +50,8 @@
 		</tr>
 		<tr>
 			<th colspan="2"
-				style="text-transform: uppercase; font-style: bold; background-color: #337ab7; color: white;"
-			>Fixed Cost</th>
+				style="text-transform: uppercase; font-style: bold; background-color: #337ab7; color: white;">Fixed
+				Cost</th>
 		</tr>
 		<tr>
 			<th>Driver Salary (INR/month):</th>
@@ -77,8 +75,8 @@
 		</tr>
 		<tr>
 			<th colspan="2"
-				style="font-style: bold; background-color: #337ab7; text-transform: uppercase; color: white;"
-			>Variable Cost</th>
+				style="font-style: bold; background-color: #337ab7; text-transform: uppercase; color: white;">Variable
+				Cost</th>
 		</tr>
 		<tr>
 			<th>Tyre Cost(INR/tyre):</th>

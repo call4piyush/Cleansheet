@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
-%>
+	pageEncoding="ISO-8859-1"%>
 <%  	 
 		if(request.getSession().getAttribute("empid")==null)
         {      request.getRequestDispatcher("index.jsp").forward(request, response);   
@@ -28,7 +27,7 @@
 			<a style="float: right;" href="Logout">Logout</a>
 		</p>
 		</header>
-		
+
 		<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
@@ -36,8 +35,8 @@
 				<li class="active"><a href="admin.jsp">Classic</a></li>
 				<li class="active"><a href="adminAdvanced.jsp">Advanced</a></li>
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"
-				>Control Panel<span class="caret"></span></a>
+					data-toggle="dropdown" href="#">Control Panel<span
+						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="adminCapex.jsp">Capex</a></li>
 						<li><a href="adminfixed.jsp">Fixed Cost</a></li>
@@ -50,8 +49,8 @@
 				<li class="active"><a href="adminUploadFreight.jsp">Upload
 						Freight</a></li>
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"
-				>Contract<span class="caret"></span></a>
+					data-toggle="dropdown" href="#">Contract<span
+						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="adminContract.jsp">View Contract</a></li>
 						<li><a href="adminUploadContract.jsp">Upload Contract</a></li>
@@ -61,8 +60,9 @@
 				<li class="active"><a href="adminHelp.jsp">Help/FAQs</a></li>
 				<li class="active"></li>
 			</ul>
-			
-		</div></nav>
+
+		</div>
+		</nav>
 		<section style="width:100%" class="panel-body">
 		<center>
 			<p>
@@ -71,8 +71,8 @@
 			<br> <br> <br>
 		</center>
 		<footer class="panel-footer"
-			style=" bottom:2%; text-align:center; color:white;position:  relative; "
-		> Copyright &copy McKinsey & Company</footer> </section>
+			style=" bottom:2%; text-align:center; color:white;position:  relative; ">
+		Copyright &copy McKinsey & Company</footer> </section>
 	</div>
 </body>
 </html>

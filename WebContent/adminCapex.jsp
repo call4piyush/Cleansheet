@@ -4,8 +4,7 @@
 <%@page import="java.sql.SQLException"%>
 <%@page import="com.DB.connection.Connect"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
-%>
+	pageEncoding="ISO-8859-1"%>
 <%  	 
 		if(request.getSession().getAttribute("empid")==null)
         {      request.getRequestDispatcher("index.jsp").forward(request, response);   
@@ -35,7 +34,7 @@ document.getElementById('2').style.visibility = 'visible';
 </script>
 
 </head>
-<body class="panel-body" >
+<body class="panel-body">
 	<%String name = request.getParameter( "name" );
 	 %>
 	<div class="card">
@@ -49,7 +48,7 @@ document.getElementById('2').style.visibility = 'visible';
 			<a style="float: right;" href="Logout">Logout</a>
 		</p>
 		</header>
-		
+
 		<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
@@ -57,8 +56,8 @@ document.getElementById('2').style.visibility = 'visible';
 				<li class="active"><a href="admin.jsp">Classic</a></li>
 				<li class="active"><a href="adminAdvanced.jsp">Advanced</a></li>
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"
-				>Control Panel<span class="caret"></span></a>
+					data-toggle="dropdown" href="#">Control Panel<span
+						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="adminCapex.jsp">Capex</a></li>
 						<li><a href="adminfixed.jsp">Fixed Cost</a></li>
@@ -71,8 +70,8 @@ document.getElementById('2').style.visibility = 'visible';
 				<li class="active"><a href="adminUploadFreight.jsp">Upload
 						Freight</a></li>
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"
-				>Contract<span class="caret"></span></a>
+					data-toggle="dropdown" href="#">Contract<span
+						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="adminContract.jsp">View Contract</a></li>
 						<li><a href="adminUploadContract.jsp">Upload Contract</a></li>
@@ -82,8 +81,9 @@ document.getElementById('2').style.visibility = 'visible';
 				<li class="active"><a href="adminHelp.jsp">Help/FAQs</a></li>
 				<li class="active"></li>
 			</ul>
-			
-		</div></nav>
+
+		</div>
+		</nav>
 		<section style="width:100%">
 		<div class="login-card">
 			<h5 align="center" style="font-weight: bold; padding: 1%">
@@ -118,29 +118,21 @@ document.getElementById('2').style.visibility = 'visible';
 						<tbody>
 							<tr>
 								<td><input type="text" readonly="readonly"
-									value='<%=rs.getString("typeofgood")%>'
-								></td>
+									value='<%=rs.getString("typeofgood")%>'></td>
 								<td><input type="text" readonly="readonly"
-									value='<%=rs.getInt("capacity")%>'
-								></td>
+									value='<%=rs.getInt("capacity")%>'></td>
 								<td><input type="text" readonly="readonly"
-									value='<%=rs.getInt("costoftruck")%>'
-								></td>
+									value='<%=rs.getInt("costoftruck")%>'></td>
 								<td><input type="text" readonly="readonly"
-									value='<%=rs.getFloat("residualvalueoftruck")%>'
-								></td>
+									value='<%=rs.getFloat("residualvalueoftruck")%>'></td>
 								<td><input type="text" readonly="readonly"
-									value='<%=rs.getFloat("loanpercentage")%>'
-								></td>
+									value='<%=rs.getFloat("loanpercentage")%>'></td>
 								<td><input type="text" readonly="readonly"
-									value='<%=rs.getInt("yearsemi")%>'
-								></td>
+									value='<%=rs.getInt("yearsemi")%>'></td>
 								<td><input type="text" readonly="readonly"
-									value='<%=rs.getFloat("rateofintrest")%>'
-								></td>
+									value='<%=rs.getFloat("rateofintrest")%>'></td>
 								<td><input type="text" readonly="readonly"
-									value='<%=rs.getFloat("flatroi")%>'
-								></td>
+									value='<%=rs.getFloat("flatroi")%>'></td>
 							</tr>
 						</tbody>
 						<%
@@ -165,55 +157,49 @@ document.getElementById('2').style.visibility = 'visible';
 							<td><input type="text" name="flatroi" required></td>
 						</tr>
 					</table>
-				
-				<div class="table-responsive">
-					<table class="table">
-						<tr id="2" style="visibility: hidden;">
-							<td></td>
-							<td><center>
-									<input type="hidden" value='<%=session.getAttribute("empid")%>'
-										name="empid"
-									> <input type="submit" name="submit" value="Submit"
-										class="login login-submit btn btn-primary active"
-									>
-								</center></td>
-							<td><center>
-									<input type="button" onclick="myFunction()" value="Cancel"
-										class="login login-submit btn btn-primary active"
-									>
-								</center></td>
-							<td></td>
-						</tr>
-						</form>
-						<tr>
-						<thead>
-							<td align="center"><input type="button" value="Add"
-								name="add" id="add"
-								class="login login-submit btn btn-primary active"
-								onclick="clickadd()"
-							></td>
-							<td align="center"><a href="modifyCapex.jsp"><input
-									type="button" value="Modify" name="modify" id="modify"
-									class="login login-submit btn btn-primary active"
-								></a></td>
-							<td align="center"><a href="deleteCapex.jsp"><input
-									type="button" value="Delete" name="del" id="del"
-									class="login login-submit btn btn-primary active"
-								></a></td>
-							<td align="center"><input type="button" value="Refresh"
-								name="refresh" id="refresh"
-								class="login login-submit btn btn-primary active"
-								onclick="myFunction()"
-							></td>
+
+					<div class="table-responsive">
+						<table class="table">
+							<tr id="2" style="visibility: hidden;">
+								<td></td>
+								<td><center>
+										<input type="hidden"
+											value='<%=session.getAttribute("empid")%>' name="empid">
+										<input type="submit" name="submit" value="Submit"
+											class="login login-submit btn btn-primary active">
+									</center></td>
+								<td><center>
+										<input type="button" onclick="myFunction()" value="Cancel"
+											class="login login-submit btn btn-primary active">
+									</center></td>
+								<td></td>
 							</tr>
-						</thead>
-					</table>
-				</div>
+							</form>
+							<tr>
+							<thead>
+								<td align="center"><input type="button" value="Add"
+									name="add" id="add"
+									class="login login-submit btn btn-primary active"
+									onclick="clickadd()"></td>
+								<td align="center"><a href="modifyCapex.jsp"><input
+										type="button" value="Modify" name="modify" id="modify"
+										class="login login-submit btn btn-primary active"></a></td>
+								<td align="center"><a href="deleteCapex.jsp"><input
+										type="button" value="Delete" name="del" id="del"
+										class="login login-submit btn btn-primary active"></a></td>
+								<td align="center"><input type="button" value="Refresh"
+									name="refresh" id="refresh"
+									class="login login-submit btn btn-primary active"
+									onclick="myFunction()"></td>
+								</tr>
+							</thead>
+						</table>
+					</div>
 		</section>
 		<div class="panel-body"></div>
 		<footer class="panel-footer"
-			style=" bottom:2%; text-align:center; color:white;position:  relative; "
-		> Copyright &copy McKinsey & Company</footer>
+			style=" bottom:2%; text-align:center; color:white;position:  relative; ">
+		Copyright &copy McKinsey & Company</footer>
 	</div>
 </body>
 </html>

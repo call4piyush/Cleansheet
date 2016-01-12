@@ -4,8 +4,7 @@
 <%@page import="java.sql.SQLException"%>
 <%@page import="com.DB.connection.Connect"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
-%>
+	pageEncoding="ISO-8859-1"%>
 <%  	 
 		if(request.getSession().getAttribute("empid")==null)
         {      request.getRequestDispatcher("index.jsp").forward(request, response);   
@@ -39,8 +38,8 @@
 				<li class="active"><a href="admin.jsp">Classic</a></li>
 				<li class="active"><a href="adminAdvanced.jsp">Advanced</a></li>
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"
-				>Control Panel<span class="caret"></span></a>
+					data-toggle="dropdown" href="#">Control Panel<span
+						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="adminCapex.jsp">Capex</a></li>
 						<li><a href="adminfixed.jsp">Fixed Cost</a></li>
@@ -90,33 +89,24 @@
 						<tbody>
 							<tr>
 								<td><input type="checkbox" name='check' value='<%=i %>'
-									class="checkbox"
-								></td>
+									class="checkbox"></td>
 								<td><input type="text" readonly="readonly"
-									name='type_<%=i %>' value='<%=rs.getString("typeofgood")%>'
-								></td>
+									name='type_<%=i %>' value='<%=rs.getString("typeofgood")%>'></td>
 								<td><input type="text" readonly="readonly"
-									name='cap_<%=i %>' value='<%=rs.getInt("capacity")%>'
-								></td>
+									name='cap_<%=i %>' value='<%=rs.getInt("capacity")%>'></td>
 								<td><input type="text" readonly="readonly"
-									name='cost_<%=i %>' value='<%=rs.getInt("costoftruck")%>'
-								></td>
+									name='cost_<%=i %>' value='<%=rs.getInt("costoftruck")%>'></td>
 								<td><input type="text" readonly="readonly"
 									name='residual_<%=i %>'
-									value='<%=rs.getFloat("residualvalueoftruck")*100%>'
-								></td>
+									value='<%=rs.getFloat("residualvalueoftruck")*100%>'></td>
 								<td><input type="text" readonly="readonly"
-									name='loan_<%=i %>' value='<%=rs.getFloat("loanpercentage")%>'
-								></td>
+									name='loan_<%=i %>' value='<%=rs.getFloat("loanpercentage")%>'></td>
 								<td><input type="text" readonly="readonly"
-									name='years_<%=i %>' value='<%=rs.getInt("yearsemi")%>'
-								></td>
+									name='years_<%=i %>' value='<%=rs.getInt("yearsemi")%>'></td>
 								<td><input type="text" readonly="readonly"
-									name='roi_<%=i %>' value='<%=rs.getFloat("rateofintrest")%>'
-								></td>
+									name='roi_<%=i %>' value='<%=rs.getFloat("rateofintrest")%>'></td>
 								<td><input type="text" readonly="readonly"
-									name='flatroi_<%=i %>' value='<%=rs.getFloat("flatroi")%>'
-								></td>
+									name='flatroi_<%=i %>' value='<%=rs.getFloat("flatroi")%>'></td>
 							</tr>
 						</tbody>
 						<%
@@ -134,16 +124,14 @@
 							<td colspan="4"></td>
 							<td><center>
 									<input type="hidden" value='<%=session.getAttribute("empid")%>'
-										name="empid"
-									> <input type="submit" name="submit" value="Submit"
-										class="login login-submit btn btn-primary active"
-									>
+										name="empid"> <input type="submit"
+										name="submit" value="Submit"
+										class="login login-submit btn btn-primary active">
 								</center></td>
 							<td><center>
 									<a href="adminCapex.jsp"><input type="button"
 										onclick="myFunction()" value="Cancel"
-										class="login login-submit btn btn-primary active"
-									></a>
+										class="login login-submit btn btn-primary active"></a>
 								</center></td>
 							<td colspan="3">
 						</tr>
@@ -153,8 +141,8 @@
 		</section>
 		<div class="panel-body"></div>
 		<footer class="panel-footer"
-			style=" bottom:2%; text-align:center; color:white;position:  relative; "
-		> Copyright &copy McKinsey & Company</footer>
+			style=" bottom:2%; text-align:center; color:white;position:  relative; ">
+		Copyright &copy McKinsey & Company</footer>
 	</div>
 </body>
 </html>

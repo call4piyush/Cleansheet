@@ -4,8 +4,7 @@
 <%@page import="java.sql.SQLException"%>
 <%@page import="com.DB.connection.Connect"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
-%>
+	pageEncoding="ISO-8859-1"%>
 <%  	 
 		if(request.getSession().getAttribute("empid")==null)
         {      request.getRequestDispatcher("index.jsp").forward(request, response);   
@@ -111,8 +110,8 @@ document.getElementById('2').style.visibility = 'visible';
 				<li class="active"><a href="admin.jsp">Classic</a></li>
 				<li class="active"><a href="adminAdvanced.jsp">Advanced</a></li>
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"
-				>Control Panel<span class="caret"></span></a>
+					data-toggle="dropdown" href="#">Control Panel<span
+						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="adminCapex.jsp">Capex</a></li>
 						<li><a href="adminfixed.jsp">Fixed Cost</a></li>
@@ -165,41 +164,29 @@ document.getElementById('2').style.visibility = 'visible';
 						<tr>
 						<tbody>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getString("typeofgood")%>'
-							></td>
+								value='<%=rs.getString("typeofgood")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getInt("tyrelife")%>'
-							></td>
+								value='<%=rs.getInt("tyrelife")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getInt("reusedtyrelife")%>'
-							></td>
+								value='<%=rs.getInt("reusedtyrelife")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getInt("tyrecost")%>'
-							></td>
+								value='<%=rs.getInt("tyrecost")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getInt("reusedtyrecost")%>'
-							></td>
+								value='<%=rs.getInt("reusedtyrecost")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getInt("tyres")%>'
-							></td>
+								value='<%=rs.getInt("tyres")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getFloat("dieselcost")%>'
-							></td>
+								value='<%=rs.getFloat("dieselcost")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getFloat("dieselmileage")%>'
-							></td>
+								value='<%=rs.getFloat("dieselmileage")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getFloat("diesealmileagewithload")%>'
-							></td>
+								value='<%=rs.getFloat("diesealmileagewithload")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getFloat("toll")%>'
-							></td>
+								value='<%=rs.getFloat("toll")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getFloat("routeexpenses")%>'
-							></td>
+								value='<%=rs.getFloat("routeexpenses")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getFloat("maintenancecostperkm")%>'
-							></td>
+								value='<%=rs.getFloat("maintenancecostperkm")%>'></td>
 							</tr>
 						</tbody>
 						<%
@@ -238,32 +225,27 @@ document.getElementById('2').style.visibility = 'visible';
 							<td align="center"><input type="button" value="Add"
 								name="add" id="add"
 								class="login login-submit btn btn-primary active"
-								onclick="clickadd()"
-							></td>
+								onclick="clickadd()"></td>
 							<td align="center"><a href="modifyvar.jsp"><input
 									type="button" value="Modify" name="modify" id="modify"
-									class="login login-submit btn btn-primary active"
-								></a></td>
+									class="login login-submit btn btn-primary active"></a></td>
 							<td align="center"><input type="button" value="Refresh"
 								name="refresh" id="refresh"
 								class="login login-submit btn btn-primary active"
-								onclick="myFunction()"
-							></td>
+								onclick="myFunction()"></td>
 							</tr>
 						</thead>
 						<tr id="2" style="visibility: hidden;">
 							<td></td>
 							<td><center>
 									<input type="hidden" value='<%=session.getAttribute("empid")%>'
-										name="empid"
-									> <input type="submit" name="submit" value="Submit"
-										class="login login-submit btn btn-primary active"
-									>
+										name="empid"> <input type="submit"
+										name="submit" value="Submit"
+										class="login login-submit btn btn-primary active">
 								</center></td>
 							<td><center>
 									<input type="button" onclick="myFunction()" value="Cancel"
-										class="login login-submit btn btn-primary active"
-									>
+										class="login login-submit btn btn-primary active">
 								</center></td>
 							<td></td>
 						</tr>
@@ -273,8 +255,8 @@ document.getElementById('2').style.visibility = 'visible';
 		</section>
 		<div class="panel-body"></div>
 		<footer class="panel-footer"
-			style=" bottom:2%; text-align:center; color:white;position:  relative; "
-		> Copyright &copy McKinsey & Company</footer>
+			style=" bottom:2%; text-align:center; color:white;position:  relative; ">
+		Copyright &copy McKinsey & Company</footer>
 	</div>
 </body>
 </html>

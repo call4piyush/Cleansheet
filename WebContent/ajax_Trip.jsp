@@ -7,28 +7,27 @@
 <%@page import="java.text.DecimalFormatSymbols"%>
 <%@page import="java.util.Locale"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
-%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 </head>
 <body>
 	<table class="table table-hover table-condensed">
-				<thead>
-						<tr>
-							<th>Slab No.</th>
-							<th>Minimum Distance</th>
-							<th>Maximum Distance</th>
-							<th>Number of Trips</th>
-							<th>Minimum Monthly Distance</th>
-							<th>Maximum Monthly Distance</th>
-							<th>Minimum Daily Distance</th>
-							<th>Maximum Daily Distance</th>
-							<th>Average Distance</th>
-						</tr>
-					</thead>
-	<% 
+		<thead>
+			<tr>
+				<th>Slab No.</th>
+				<th>Minimum Distance</th>
+				<th>Maximum Distance</th>
+				<th>Number of Trips</th>
+				<th>Minimum Monthly Distance</th>
+				<th>Maximum Monthly Distance</th>
+				<th>Minimum Daily Distance</th>
+				<th>Maximum Daily Distance</th>
+				<th>Average Distance</th>
+			</tr>
+		</thead>
+		<% 
 					DecimalFormat df = new DecimalFormat("##,###", new DecimalFormatSymbols(Locale.US));
 							try{
 							String cap=(String)request.getParameter("val");
@@ -43,38 +42,29 @@
 					               while( rs.next() )
 					 		 {
 							 	%>
-				<tbody>
-						<tr>
-							<td align="justify"><input type="text"
-								value='<%= rs.getString("Slab") %>' readonly
-							></td>
-							<td align="justify"><input type="text"
-								value='<%= rs.getInt("Min Distance") %>' readonly
-							></td>
-							<td align="justify"><input type="text"
-								value='<%= rs.getInt("Max Distance") %>' readonly
-							></td>
-							<td align="justify"><input type="text"
-								value='<%= rs.getFloat("NoofTrip") %>' readonly
-							></td>
-							<td align="justify"><input type="text"
-								value='<%= rs.getInt("Min Monthly Distance") %>' readonly
-							></td>
-							<td align="justify"><input type="text"
-								value='<%= rs.getInt("Max Monthly Distance") %>' readonly
-							></td>
-							<td align="justify"><input type="text"
-								value='<%= rs.getInt("Min Daily Distance") %>' readonly
-							></td>
-							<td align="justify"><input type="text"
-								value='<%= rs.getInt("Max Daily Distance") %>' readonly
-							></td>
-							<td align="justify"><input type="text"
-								value='<%= rs.getFloat("Average") %>' readonly
-							></td>
-						</tr>
-					</tbody>
-				<%
+		<tbody>
+			<tr>
+				<td align="justify"><input type="text"
+					value='<%= rs.getString("Slab") %>' readonly></td>
+				<td align="justify"><input type="text"
+					value='<%= rs.getInt("Min Distance") %>' readonly></td>
+				<td align="justify"><input type="text"
+					value='<%= rs.getInt("Max Distance") %>' readonly></td>
+				<td align="justify"><input type="text"
+					value='<%= rs.getFloat("NoofTrip") %>' readonly></td>
+				<td align="justify"><input type="text"
+					value='<%= rs.getInt("Min Monthly Distance") %>' readonly></td>
+				<td align="justify"><input type="text"
+					value='<%= rs.getInt("Max Monthly Distance") %>' readonly></td>
+				<td align="justify"><input type="text"
+					value='<%= rs.getInt("Min Daily Distance") %>' readonly></td>
+				<td align="justify"><input type="text"
+					value='<%= rs.getInt("Max Daily Distance") %>' readonly></td>
+				<td align="justify"><input type="text"
+					value='<%= rs.getFloat("Average") %>' readonly></td>
+			</tr>
+		</tbody>
+		<%
 					 		}
 			
 					            	
@@ -94,41 +84,33 @@
 					               while( rs1.next())
 					 		 {
 			%><tbody>
-						<tr>
-							<td align="justify"><input type="text"
-								value='<%= rs1.getString("Slab") %>' readonly
-							></td>
-							<td align="justify"><input type="text"
-								value='<%= rs1.getInt("Min Distance") %>' readonly
-							></td>
-							<td align="justify"><input type="text"
-								value='<%= rs1.getInt("Max Distance") %>' readonly
-							></td>
-							<td align="justify"><input type="text"
-								value='<%= rs1.getFloat("NoofTrip") %>' readonly
-							></td>
-							<td align="justify"><input type="text"
-								value='<%= rs1.getInt("Min Monthly Distance") %>' readonly
-							></td>
-							<td align="justify"><input type="text"
-								value='<%= rs1.getInt("Max Monthly Distance") %>' readonly
-							></td>
-							<td align="justify"><input type="text"
-								value='<%= rs1.getInt("Min Daily Distance") %>' readonly
-							></td>
-							<td align="justify"><input type="text"
-								value='<%= rs1.getInt("Max Daily Distance") %>' readonly
-							></td>
-							<td align="justify"><input type="text"
-								value='<%= rs1.getFloat("Average") %>' readonly
-							></td>
-						</tr>
-					</tbody>
-	
-	<%}}
+			<tr>
+				<td align="justify"><input type="text"
+					value='<%= rs1.getString("Slab") %>' readonly></td>
+				<td align="justify"><input type="text"
+					value='<%= rs1.getInt("Min Distance") %>' readonly></td>
+				<td align="justify"><input type="text"
+					value='<%= rs1.getInt("Max Distance") %>' readonly></td>
+				<td align="justify"><input type="text"
+					value='<%= rs1.getFloat("NoofTrip") %>' readonly></td>
+				<td align="justify"><input type="text"
+					value='<%= rs1.getInt("Min Monthly Distance") %>' readonly></td>
+				<td align="justify"><input type="text"
+					value='<%= rs1.getInt("Max Monthly Distance") %>' readonly></td>
+				<td align="justify"><input type="text"
+					value='<%= rs1.getInt("Min Daily Distance") %>' readonly></td>
+				<td align="justify"><input type="text"
+					value='<%= rs1.getInt("Max Daily Distance") %>' readonly></td>
+				<td align="justify"><input type="text"
+					value='<%= rs1.getFloat("Average") %>' readonly></td>
+			</tr>
+		</tbody>
+
+		<%}}
 					}
 				catch(Exception e){
 				e.printStackTrace();
-				}%></table>
+				}%>
+	</table>
 </body>
 </html>

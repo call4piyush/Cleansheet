@@ -20,19 +20,16 @@ body {
 		<form class="form-inline" role="form" action="Login" method="post">
 			<div class="form-group">
 				<input type="text" class="form-control" name="emp"
-					placeholder="Enter Employee Id" required
-				>
+					placeholder="Enter Employee Id" required>
 			</div>
 			<div class="form-group">
 				<input type="password" class="form-control" name="pass"
-					placeholder="Enter Password" required
-				>
+					placeholder="Enter Password" required>
 			</div>
 			<button type="submit" class="btn btn-primary active" name="login">Sign
 				In</button>
 			<br> <a href="register.jsp"
-				style="padding-right: 1%; color: white;"
-			>Sign Up</a>
+				style="padding-right: 1%; color: white;">Sign Up</a>
 		</form>
 	</div>
 </body>

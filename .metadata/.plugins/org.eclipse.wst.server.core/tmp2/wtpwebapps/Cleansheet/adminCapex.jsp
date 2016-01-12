@@ -4,8 +4,7 @@
 <%@page import="java.sql.SQLException"%>
 <%@page import="com.DB.connection.Connect"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
-%>
+	pageEncoding="ISO-8859-1"%>
 <%  	 
 		if(request.getSession().getAttribute("empid")==null)
         {      request.getRequestDispatcher("index.jsp").forward(request, response);   
@@ -54,8 +53,8 @@ document.getElementById('2').style.visibility = 'visible';
 				<li class="active"><a href="admin.jsp">Classic</a></li>
 				<li class="active"><a href="adminAdvanced.jsp">Advanced</a></li>
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"
-				>Control Panel<span class="caret"></span></a>
+					data-toggle="dropdown" href="#">Control Panel<span
+						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="adminCapex.jsp">Capex</a></li>
 						<li><a href="adminfixed.jsp">Fixed Cost</a></li>
@@ -104,29 +103,21 @@ document.getElementById('2').style.visibility = 'visible';
 						<tbody>
 							<tr>
 								<td><input type="text" readonly="readonly"
-									value='<%=rs.getString("typeofgood")%>'
-								></td>
+									value='<%=rs.getString("typeofgood")%>'></td>
 								<td><input type="text" readonly="readonly"
-									value='<%=rs.getInt("capacity")%>'
-								></td>
+									value='<%=rs.getInt("capacity")%>'></td>
 								<td><input type="text" readonly="readonly"
-									value='<%=rs.getInt("costoftruck")%>'
-								></td>
+									value='<%=rs.getInt("costoftruck")%>'></td>
 								<td><input type="text" readonly="readonly"
-									value='<%=rs.getFloat("residualvalueoftruck")*100%>'
-								></td>
+									value='<%=rs.getFloat("residualvalueoftruck")*100%>'></td>
 								<td><input type="text" readonly="readonly"
-									value='<%=rs.getFloat("loanpercentage")%>'
-								></td>
+									value='<%=rs.getFloat("loanpercentage")%>'></td>
 								<td><input type="text" readonly="readonly"
-									value='<%=rs.getInt("yearsemi")%>'
-								></td>
+									value='<%=rs.getInt("yearsemi")%>'></td>
 								<td><input type="text" readonly="readonly"
-									value='<%=rs.getFloat("rateofintrest")%>'
-								></td>
+									value='<%=rs.getFloat("rateofintrest")%>'></td>
 								<td><input type="text" readonly="readonly"
-									value='<%=rs.getFloat("flatroi")%>'
-								></td>
+									value='<%=rs.getFloat("flatroi")%>'></td>
 							</tr>
 						</tbody>
 						<%
@@ -158,15 +149,13 @@ document.getElementById('2').style.visibility = 'visible';
 							<td></td>
 							<td><center>
 									<input type="hidden" value='<%=session.getAttribute("empid")%>'
-										name="empid"
-									> <input type="submit" name="submit" value="Submit"
-										class="login login-submit btn btn-primary active"
-									>
+										name="empid"> <input type="submit"
+										name="submit" value="Submit"
+										class="login login-submit btn btn-primary active">
 								</center></td>
 							<td><center>
 									<input type="button" onclick="myFunction()" value="Cancel"
-										class="login login-submit btn btn-primary active"
-									>
+										class="login login-submit btn btn-primary active">
 								</center></td>
 							<td></td>
 						</tr>
@@ -176,21 +165,17 @@ document.getElementById('2').style.visibility = 'visible';
 							<td align="center"><input type="button" value="Add"
 								name="add" id="add"
 								class="login login-submit btn btn-primary active"
-								onclick="clickadd()"
-							></td>
+								onclick="clickadd()"></td>
 							<td align="center"><a href="modifyCapex.jsp"><input
 									type="button" value="Modify" name="modify" id="modify"
-									class="login login-submit btn btn-primary active"
-								></a></td>
+									class="login login-submit btn btn-primary active"></a></td>
 							<td align="center"><a href="deleteCapex.jsp"><input
 									type="button" value="Delete" name="del" id="del"
-									class="login login-submit btn btn-primary active"
-								></a></td>
+									class="login login-submit btn btn-primary active"></a></td>
 							<td align="center"><input type="button" value="Refresh"
 								name="refresh" id="refresh"
 								class="login login-submit btn btn-primary active"
-								onclick="myFunction()"
-							></td>
+								onclick="myFunction()"></td>
 							</tr>
 						</thead>
 					</table>
@@ -198,8 +183,8 @@ document.getElementById('2').style.visibility = 'visible';
 		</section>
 		<div class="panel-body"></div>
 		<footer class="panel-footer"
-			style=" bottom:2%; text-align:center; color:white;position:  relative; "
-		> Copyright &copy McKinsey & Company</footer>
+			style=" bottom:2%; text-align:center; color:white;position:  relative; ">
+		Copyright &copy McKinsey & Company</footer>
 	</div>
 </body>
 </html>

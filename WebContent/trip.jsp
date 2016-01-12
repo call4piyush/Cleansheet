@@ -69,55 +69,54 @@ function getInfo()
 		</p>
 		</header>
 		<form method="post" class="form-group panel-body" name="vform">
-		<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="Auto.jsp">Auto</a></li>
-				<li class="active"><a href="home.jsp">Classic</a></li>
-				<li class="active"><a href="Advanced.jsp">Advanced</a></li>
-				<li class="active" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"
-				>Control Panel<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="Capex.jsp">Capex</a></li>
-						<li><a href="fixed.jsp">Fixed Cost</a></li>
-						<li><a href="variable.jsp">Variable Cost</a></li>
-						<li><a href="trip.jsp">Trip Matrix</a></li>
-					</ul></li>
-				<li class="active"><a href="uploadFreight.jsp">Upload
-						Freight</a></li>
-				<li class="active"><a href="uploadContract.jsp">View
-						Contract</a></li>
-				<li class="active"><a href="GetLat.jsp">Get Lat Long</a></li>
-				<li class="active"><a href="Help.jsp">Help/FAQs</a></li>
-				<li class="active"></li>
-			</ul>
-			<p>
+			<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="Auto.jsp">Auto</a></li>
+					<li class="active"><a href="home.jsp">Classic</a></li>
+					<li class="active"><a href="Advanced.jsp">Advanced</a></li>
+					<li class="active" class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Control Panel<span
+							class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="Capex.jsp">Capex</a></li>
+							<li><a href="fixed.jsp">Fixed Cost</a></li>
+							<li><a href="variable.jsp">Variable Cost</a></li>
+							<li><a href="trip.jsp">Trip Matrix</a></li>
+						</ul></li>
+					<li class="active"><a href="uploadFreight.jsp">Upload
+							Freight</a></li>
+					<li class="active"><a href="uploadContract.jsp">View
+							Contract</a></li>
+					<li class="active"><a href="GetLat.jsp">Get Lat Long</a></li>
+					<li class="active"><a href="Help.jsp">Help/FAQs</a></li>
+					<li class="active"></li>
+				</ul>
+				<p>
 				<center>
 					<input type="text" placeholder="Search Slab" name='Search'
-						onchange="sendInfo()"
-					>
+						onchange="sendInfo()">
 				</center>
-				</p></form>
-		</div>
-		</nav>
-		<section style="width:100%">
-		<div class="login-card">
-			<h5 align="center" style="font-weight: bold; padding: 1%">
-				Control Panel<br>Trip Matrix
-			</h5>
-			<div
+				</p>
+		</form>
+	</div>
+	</nav>
+	<section style="width:100%">
+	<div class="login-card">
+		<h5 align="center" style="font-weight: bold; padding: 1%">
+			Control Panel<br>Trip Matrix
+		</h5>
+		<div
 			class="table-responsive table table-bordered table-condensed tabel-hover"
-			id="tab"
-		></div>	</div>
-			<script type="text/javascript">
+			id="tab"></div>
+	</div>
+	<script type="text/javascript">
 			document.getElementById("dropDownId").addEventListener("load", sendInfo());
-			</script>
-		</section>
-		<div class="panel-body"></div>
-		<footer class="panel-footer"
-			style=" bottom:2%; text-align:center; color:white;position:  relative; "
-		> Copyright &copy McKinsey & Company</footer>
+			</script> </section>
+	<div class="panel-body"></div>
+	<footer class="panel-footer"
+		style=" bottom:2%; text-align:center; color:white;position:  relative; ">
+	Copyright &copy McKinsey & Company</footer>
 	</div>
 </body>
 </html>

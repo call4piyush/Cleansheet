@@ -55,8 +55,8 @@ function myFunction() {
 				<li class="active"><a href="admin.jsp">Classic</a></li>
 				<li class="active"><a href="adminAdvanced.jsp">Advanced</a></li>
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"
-				>Control Panel<span class="caret"></span></a>
+					data-toggle="dropdown" href="#">Control Panel<span
+						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="adminCapex.jsp">Capex</a></li>
 						<li><a href="adminfixed.jsp">Fixed Cost</a></li>
@@ -105,32 +105,23 @@ function myFunction() {
 						<tbody>
 							<tr>
 								<td align="justify"><input type="text"
-									value='<%= rs.getString("Slab") %>' readonly
-								></td>
+									value='<%= rs.getString("Slab") %>' readonly></td>
 								<td align="justify"><input type="text"
-									value='<%= rs.getInt("Min Distance") %>' readonly
-								></td>
+									value='<%= rs.getInt("Min Distance") %>' readonly></td>
 								<td align="justify"><input type="text"
-									value='<%= rs.getInt("Max Distance") %>' readonly
-								></td>
+									value='<%= rs.getInt("Max Distance") %>' readonly></td>
 								<td align="justify"><input type="text"
-									value='<%= rs.getFloat("NoofTrip") %>' readonly
-								></td>
+									value='<%= rs.getFloat("NoofTrip") %>' readonly></td>
 								<td align="justify"><input type="text"
-									value='<%= rs.getInt("Min Monthly Distance") %>' readonly
-								></td>
+									value='<%= rs.getInt("Min Monthly Distance") %>' readonly></td>
 								<td align="justify"><input type="text"
-									value='<%= rs.getInt("Max Monthly Distance") %>' readonly
-								></td>
+									value='<%= rs.getInt("Max Monthly Distance") %>' readonly></td>
 								<td align="justify"><input type="text"
-									value='<%= rs.getInt("Min Daily Distance") %>' readonly
-								></td>
+									value='<%= rs.getInt("Min Daily Distance") %>' readonly></td>
 								<td align="justify"><input type="text"
-									value='<%= rs.getInt("Max Daily Distance") %>' readonly
-								></td>
+									value='<%= rs.getInt("Max Daily Distance") %>' readonly></td>
 								<td align="justify"><input type="text"
-									value='<%= rs.getFloat("Average") %>' readonly
-								></td>
+									value='<%= rs.getFloat("Average") %>' readonly></td>
 							</tr>
 						</tbody>
 						<%
@@ -151,37 +142,29 @@ function myFunction() {
 								<td align="justify"><input type="text" name="min" required></td>
 								<td align="justify"><input type="text" name="max" required></td>
 								<td align="justify"><input type="text" name="nooftrip"
-									required
-								></td>
+									required></td>
 								<td align="justify"><input type="text" name="minmonth"
-									required
-								></td>
+									required></td>
 								<td align="justify"><input type="text" name="maxmonth"
-									required
-								></td>
+									required></td>
 								<td align="justify"><input type="text" name="mindaily"
-									required
-								></td>
+									required></td>
 								<td align="justify"><input type="text" name="maxdaily"
-									required
-								></td>
+									required></td>
 								<td align="justify"><input type="text" name="average"
-									required
-								></td>
+									required></td>
 							</tr>
 							<tr style="visibility: hidden;" id="2">
 								<td colspan="4"></td>
 								<td><center>
 										<input type="hidden"
-											value='<%=session.getAttribute("empid")%>' name="empid"
-										> <input type="submit" name="submit" value="Submit"
-											class="login login-submit btn btn-primary active"
-										>
+											value='<%=session.getAttribute("empid")%>' name="empid">
+										<input type="submit" name="submit" value="Submit"
+											class="login login-submit btn btn-primary active">
 									</center></td>
 								<td><center>
 										<input type="button" onclick="myFunction()" value="Cancel"
-											class="login login-submit btn btn-primary active"
-										>
+											class="login login-submit btn btn-primary active">
 									</center></td>
 								<td colspan="4">
 							</tr>
@@ -195,14 +178,12 @@ function myFunction() {
 							<td align="center"><input type="button" value="Add Slab"
 								name="add" id="add"
 								class="login login-submit btn btn-primary active"
-								onclick="clickadd()"
-							></td>
+								onclick="clickadd()"></td>
 							<td align="center"></td>
 							<td align="center"></td>
 							<td align="center"><input type="button" value="Refresh"
 								name="refresh" id="refresh"
-								class="login login-submit btn btn-primary active"
-							></td>
+								class="login login-submit btn btn-primary active"></td>
 							</tr>
 						</thead>
 					</table>
@@ -210,8 +191,8 @@ function myFunction() {
 		</section>
 		<div class="panel-body"></div>
 		<footer class="panel-footer"
-			style=" bottom:2%; text-align:center; color:white;position:  relative; "
-		> Copyright &copy McKinsey & Company</footer>
+			style=" bottom:2%; text-align:center; color:white;position:  relative; ">
+		Copyright &copy McKinsey & Company</footer>
 	</div>
 </body>
 </html>

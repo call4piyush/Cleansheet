@@ -4,8 +4,7 @@
 <%@page import="java.sql.SQLException"%>
 <%@page import="com.DB.connection.Connect"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
-%>
+	pageEncoding="ISO-8859-1"%>
 <%  	 
 		if(request.getSession().getAttribute("empid")==null)
         {      request.getRequestDispatcher("index.jsp").forward(request, response);   
@@ -56,8 +55,8 @@ document.getElementById('2').style.visibility = 'visible';
 				<li class="active"><a href="admin.jsp">Classic</a></li>
 				<li class="active"><a href="adminAdvanced.jsp">Advanced</a></li>
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"
-				>Control Panel<span class="caret"></span></a>
+					data-toggle="dropdown" href="#">Control Panel<span
+						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="adminCapex.jsp">Capex</a></li>
 						<li><a href="adminfixed.jsp">Fixed Cost</a></li>
@@ -102,20 +101,15 @@ document.getElementById('2').style.visibility = 'visible';
 					<tbody>
 						<tr>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getString("typeofgood")%>'
-							></td>
+								value='<%=rs.getString("typeofgood")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getString("Origin")%>'
-							></td>
+								value='<%=rs.getString("Origin")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getInt("capacity")%>'
-							></td>
+								value='<%=rs.getInt("capacity")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getInt("Pirority")%>'
-							></td>
+								value='<%=rs.getInt("Pirority")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getInt("Volume Rating")%>'
-							></td>
+								value='<%=rs.getInt("Volume Rating")%>'></td>
 						</tr>
 					</tbody>
 					<%
@@ -136,21 +130,17 @@ document.getElementById('2').style.visibility = 'visible';
 					<thead>
 						<td align="center"><a href="add.jsp"><input type="button"
 								value="Add" name="add" id="add"
-								class="login login-submit btn btn-primary active"
-							></a></td>
+								class="login login-submit btn btn-primary active"></a></td>
 						<td align="center"><a href="#"><input type="button"
 								value="Modify" name="modify" id="modify"
-								class="login login-submit btn btn-primary active"
-							></a></td>
+								class="login login-submit btn btn-primary active"></a></td>
 						<td align="center"><a href="#"><input type="button"
 								value="Delete" name="del" id="del"
-								class="login login-submit btn btn-primary active"
-							></a></td>
+								class="login login-submit btn btn-primary active"></a></td>
 						<td align="center"><input type="button" value="Refresh"
 							name="refresh" id="refresh"
 							class="login login-submit btn btn-primary active"
-							onclick="myFunction()"
-						></td>
+							onclick="myFunction()"></td>
 						</tr>
 					</thead>
 				</table>
@@ -158,8 +148,8 @@ document.getElementById('2').style.visibility = 'visible';
 		</section>
 		<div class="panel-body"></div>
 		<footer class="panel-footer"
-			style=" bottom:2%; text-align:center; color:white;position:  relative; "
-		> Copyright &copy McKinsey & Company</footer>
+			style=" bottom:2%; text-align:center; color:white;position:  relative; ">
+		Copyright &copy McKinsey & Company</footer>
 	</div>
 </body>
 </html>

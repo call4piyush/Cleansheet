@@ -5,8 +5,7 @@
 <%@page import="java.sql.Statement"%>
 <%@page import="com.DB.connection.Connect"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
-%>
+	pageEncoding="ISO-8859-1"%>
 <%  	 
 		if(request.getSession().getAttribute("empid")==null)
         {      request.getRequestDispatcher("index.jsp").forward(request, response);   
@@ -43,8 +42,8 @@
 				<li class="active"><a href="home.jsp">Classic</a></li>
 				<li class="active"><a href="Advanced.jsp">Advanced</a></li>
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"
-				>Control Panel<span class="caret"></span></a>
+					data-toggle="dropdown" href="#">Control Panel<span
+						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="Capex.jsp">Capex</a></li>
 						<li><a href="fixed.jsp">Fixed Cost</a></li>
@@ -93,38 +92,27 @@
 							 	%><tbody>
 						<tr>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getString("typeofgood")%>'
-							></td>
+								value='<%=rs.getString("typeofgood")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getInt("r.driver/cleaner salary")%>'
-							></td>
+								value='<%=rs.getInt("r.driver/cleaner salary")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getInt("r.driver/cleaner bhatta")%>'
-							></td>
+								value='<%=rs.getInt("r.driver/cleaner bhatta")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getInt("r.maintenancepermonth")%>'
-							></td>
+								value='<%=rs.getInt("r.maintenancepermonth")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getInt("roadtaxyear")%>'
-							></td>
+								value='<%=rs.getInt("roadtaxyear")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getInt("roadpermityear")%>'
-							></td>
+								value='<%=rs.getInt("roadpermityear")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getFloat("insuranceaspercentageofvechiclecost")%>'
-							></td>
+								value='<%=rs.getFloat("insuranceaspercentageofvechiclecost")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getInt("admin costs")%>'
-							></td>
+								value='<%=rs.getInt("admin costs")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getInt("tarpaulin")%>'
-							></td>
+								value='<%=rs.getInt("tarpaulin")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getInt("profitmargin")%>'
-							></td>
+								value='<%=rs.getInt("profitmargin")%>'></td>
 							<td><input type="text" readonly="readonly"
-								value='<%=rs.getInt("loadingcharges")%>'
-							></td>
+								value='<%=rs.getInt("loadingcharges")%>'></td>
 						</tr>
 					</tbody>
 					<%
@@ -144,8 +132,8 @@
 		</section>
 		<div class="panel-body"></div>
 		<footer class="panel-footer"
-			style=" bottom:2%; text-align:center; color:white;position:  relative; "
-		> Copyright &copy McKinsey & Company</footer>
+			style=" bottom:2%; text-align:center; color:white;position:  relative; ">
+		Copyright &copy McKinsey & Company</footer>
 	</div>
 </body>
 </html>

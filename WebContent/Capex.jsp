@@ -4,8 +4,7 @@
 <%@page import="java.sql.SQLException"%>
 <%@page import="com.DB.connection.Connect"%>
 <%@page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
-%>
+	pageEncoding="ISO-8859-1"%>
 <%  	 
 		if(request.getSession().getAttribute("empid")==null)
         {      request.getRequestDispatcher("index.jsp").forward(request, response);   
@@ -78,8 +77,8 @@ function getInfo()
 					<li class="active"><a href="home.jsp">Classic</a></li>
 					<li class="active"><a href="Advanced.jsp">Advanced</a></li>
 					<li class="active" class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#"
-					>Control Panel<span class="caret"></span></a>
+						data-toggle="dropdown" href="#">Control Panel<span
+							class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="Capex.jsp">Capex</a></li>
 							<li><a href="fixed.jsp">Fixed Cost</a></li>
@@ -97,8 +96,7 @@ function getInfo()
 				<p>
 				<center>
 					<input type="text" placeholder="Search Truck Type" name='Search'
-						onchange="sendInfo()"
-					>
+						onchange="sendInfo()">
 				</center>
 				</p>
 		</form>
@@ -109,20 +107,19 @@ function getInfo()
 		<h5 align="center" style="font-weight: bold; padding: 1%">
 			Control Panel<br>Capex
 		</h5>
-		
-	
+
+
 		<div
 			class="table-responsive table table-bordered table-condensed tabel-hover"
-			id="tab"
-		></div>	</div>
-			<script type="text/javascript">
+			id="tab"></div>
+	</div>
+	<script type="text/javascript">
 			document.getElementById("dropDownId").addEventListener("load", sendInfo());
-			</script>
-	</section>
+			</script> </section>
 	<div class="panel-body"></div>
 	<footer class="panel-footer"
-		style=" bottom:2%; text-align:center; color:white;position:  relative; "
-	> Copyright &copy McKinsey & Company</footer>
+		style=" bottom:2%; text-align:center; color:white;position:  relative; ">
+	Copyright &copy McKinsey & Company</footer>
 	</div>
 </body>
 </html>

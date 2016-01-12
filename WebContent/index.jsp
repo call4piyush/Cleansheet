@@ -18,15 +18,13 @@ body {
 		<img src="./images/logo.jpg" alt="Logo"> <br>
 		<form action="Login" method="post">
 			<input type="text" class="form-control" name="emp"
-				placeholder="User Id" required
-			> <input type="password" class="form-control" name="pass"
-				placeholder="Password" required
-			>
+				placeholder="User Id" required> <input type="password"
+				class="form-control" name="pass" placeholder="Password" required>
 			<button type="submit" class="login login-submit" name="login">Sign
 				In</button>
 			<a href="register.jsp" class="help"
-				style="float: right; color: black; background-color: white"
-			>Sign Up</a>
+				style="float: right; color: black; background-color: white">Sign
+				Up</a>
 		</form>
 	</div>
 </body>

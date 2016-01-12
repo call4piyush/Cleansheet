@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
-%>
+	pageEncoding="ISO-8859-1"%>
 <%  	 
 		if(request.getSession().getAttribute("empid")==null)
         {      request.getRequestDispatcher("index.jsp").forward(request, response);   
@@ -14,13 +13,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Output Summary</title>
 <script type="text/javascript"
-	src="http://maps.google.com/maps/api/js?sensor=false"
-></script>
+	src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script src="./js/amcharts.js" type="text/javascript"></script>
 <script src="./js/serial.js" type="text/javascript"></script>
 <script language="javascript" type="text/javascript"
-	src="js/AdvancedMap.js"
-></script>
+	src="js/AdvancedMap.js"></script>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -445,12 +442,10 @@
 </head>
 <body onload="calcRoute()" class="panel-body">
 	<input type="hidden" value='<%=session.getAttribute("start") %>'
-		id="start"
-	>
+		id="start">
 	<input type="hidden" value='<%=session.getAttribute("end") %>' id="mid">
 	<input type="hidden" value='<%=session.getAttribute("backstart")%>'
-		id="end"
-	>
+		id="end">
 	<div class="card">
 		<header>
 		<h1 align="center">TRAC- Transport Cleansheet Costing Tool</h1>
@@ -467,8 +462,8 @@
 				<li class="active"><a href="admin.jsp">Classic</a></li>
 				<li class="active"><a href="adminAdvanced.jsp">Advanced</a></li>
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"
-				>Control Panel<span class="caret"></span></a>
+					data-toggle="dropdown" href="#">Control Panel<span
+						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="adminCapex.jsp">Capex</a></li>
 						<li><a href="adminfixed.jsp">Fixed Cost</a></li>
@@ -501,8 +496,7 @@
 				<div id="home" class="tab-pane fade in active">
 					<font size="4">
 						<div
-							class="table-responsive table table-bordered table-condensed tabel-hover"
-						>
+							class="table-responsive table table-bordered table-condensed tabel-hover">
 							<table class="table table-bordered table-condensed tabel-hover">
 								<tr>
 									<td>HeadStart City:</td>
@@ -571,8 +565,8 @@
 		<div id="map_canvas" class="right" style="height: 58%"></div>
 		<div class="panel-body"></div>
 		<footer class="panel-footer"
-			style=" bottom:2%; text-align:center; color:white;position:  relative; "
-		> Copyright &copy McKinsey & Company</footer>
+			style=" bottom:2%; text-align:center; color:white;position:  relative; ">
+		Copyright &copy McKinsey & Company</footer>
 	</div>
 	</div>
 	</div>

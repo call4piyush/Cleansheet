@@ -7,8 +7,7 @@
 <%@page import="java.text.DecimalFormatSymbols"%>
 <%@page import="java.util.Locale"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
-%>
+	pageEncoding="ISO-8859-1"%>
 <%  	 
 		if(request.getSession().getAttribute("empid")==null)
         {      request.getRequestDispatcher("index.jsp").forward(request, response);   
@@ -245,8 +244,8 @@
 				<li class="active"><a href="home.jsp">Classic</a></li>
 				<li class="active"><a href="Advanced.jsp">Advanced</a></li>
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"
-				>Control Panel<span class="caret"></span></a>
+					data-toggle="dropdown" href="#">Control Panel<span
+						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="Capex.jsp">Capex</a></li>
 						<li><a href="fixed.jsp">Fixed Cost</a></li>
@@ -266,38 +265,28 @@
 		<ul class="nav nav-tabs">
 			<li class="active"><a data-toggle="tab" href="#home">Tab 1</a></li>
 			<li id='1' style="visibility: hidden;"><a data-toggle="tab"
-				href="#menu1"
-			>Tab 2</a></li>
+				href="#menu1">Tab 2</a></li>
 			<li id='2' style="visibility: hidden;"><a data-toggle="tab"
-				href="#menu2"
-			>Tab 3</a></li>
+				href="#menu2">Tab 3</a></li>
 			<li id='3' style="visibility: hidden;"><a data-toggle="tab"
-				href="#menu3"
-			>Tab 4</a></li>
+				href="#menu3">Tab 4</a></li>
 			<li id='4' style="visibility: hidden;"><a data-toggle="tab"
-				href="#menu4"
-			>Tab 5</a></li>
+				href="#menu4">Tab 5</a></li>
 			<li id='5' style="visibility: hidden;"><a data-toggle="tab"
-				href="#menu5"
-			>Tab 6</a></li>
+				href="#menu5">Tab 6</a></li>
 			<li id='6' style="visibility: hidden;"><a data-toggle="tab"
-				href="#menu6"
-			>Tab 7</a></li>
+				href="#menu6">Tab 7</a></li>
 			<li id='7' style="visibility: hidden;"><a data-toggle="tab"
-				href="#menu7"
-			>Tab 8</a></li>
+				href="#menu7">Tab 8</a></li>
 			<li id='8' style="visibility: hidden;"><a data-toggle="tab"
-				href="#menu8"
-			>Tab 9</a></li>
+				href="#menu8">Tab 9</a></li>
 			<li id='9' style="visibility: hidden;"><a data-toggle="tab"
-				href="#menu9"
-			>Tab 10</a></li>
+				href="#menu9">Tab 10</a></li>
 		</ul>
 		<section>
 		<div class="login-card " style="width: 100%">
 			<div class="right panel-body embed-responsive-item"
-				style="height: 65%;"
-			>
+				style="height: 65%;">
 				<h5 style="font-weight: bold; padding: 1%">PTPK Chart</h5>
 				<ul style="list-style-type: square; float: right;">
 					<li style="color: red">PTPK</li>
@@ -309,12 +298,11 @@
 				<div id="home" class="tab-pane fade in active">
 					<h5 style="font-weight: bold; padding: 1%">Freight Table</h5>
 					<table class="table table-bordered table-condensed tabel-hover"
-						style="padding: 2%; background-color: white;"
-					>
+						style="padding: 2%; background-color: white;">
 						<tr>
 							<th>Origin</th>
 							<th>Destination</th>
-							<th>Backhaul Origin</th> 
+							<th>Backhaul Origin</th>
 							<th>Vehicle Type</th>
 							<th>Emptyhaul Distance</th>
 							<th>PTPK</th>
@@ -346,12 +334,11 @@
 				</div>
 				<div id="menu1" class="tab-pane fade" style="visibility: hidden;">
 					<table class="table table-bordered table-condensed tabel-hover"
-						style="padding: 2%; background-color: white;"
-					>
+						style="padding: 2%; background-color: white;">
 						<tr>
 							<th>Origin</th>
 							<th>Destination</th>
-							<th>Backhaul Origin</th> 
+							<th>Backhaul Origin</th>
 							<th>Vehicle Type</th>
 							<th>Emptyhaul Distance</th>
 							<th>PTPK</th>
@@ -379,12 +366,11 @@
 				</div>
 				<div id="menu2" class="tab-pane fade" style="visibility: hidden;">
 					<table class="table table-bordered table-condensed tabel-hover"
-						style="padding: 2%; background-color: white;"
-					>
+						style="padding: 2%; background-color: white;">
 						<tr>
 							<th>Origin</th>
 							<th>Destination</th>
-							<th>Backhaul Origin</th> 
+							<th>Backhaul Origin</th>
 							<th>Vehicle Type</th>
 							<th>Emptyhaul Distance</th>
 							<th>PTPK</th>
@@ -397,7 +383,7 @@
 	i=30;
 	while(rs3.absolute(i))
 	{ if(i>30&&i<=45){%>
-					<tr>
+						<tr>
 							<td><%=rs3.getString("Origin")%></td>
 							<td><%=rs3.getString("Destination")%></td>
 							<td><%=rs3.getString("backhaul")%></td>
@@ -412,12 +398,11 @@
 				</div>
 				<div id="menu3" class="tab-pane fade" style="visibility: hidden;">
 					<table class="table table-bordered table-condensed tabel-hover"
-						style="padding: 2%; background-color: white;"
-					>
+						style="padding: 2%; background-color: white;">
 						<tr>
 							<th>Origin</th>
 							<th>Destination</th>
-							<th>Backhaul Origin</th> 
+							<th>Backhaul Origin</th>
 							<th>Vehicle Type</th>
 							<th>Emptyhaul Distance</th>
 							<th>PTPK</th>
@@ -445,12 +430,11 @@
 				</div>
 				<div id="menu4" class="tab-pane fade" style="visibility: hidden;">
 					<table class="table table-bordered table-condensed tabel-hover"
-						style="padding: 2%; background-color: white;"
-					>
+						style="padding: 2%; background-color: white;">
 						<tr>
 							<th>Origin</th>
 							<th>Destination</th>
-							<th>Backhaul Origin</th> 
+							<th>Backhaul Origin</th>
 							<th>Vehicle Type</th>
 							<th>Emptyhaul Distance</th>
 							<th>PTPK</th>
@@ -478,12 +462,11 @@
 				</div>
 				<div id="menu5" class="tab-pane fade" style="visibility: hidden;">
 					<table class="table table-bordered table-condensed tabel-hover"
-						style="padding: 2%; background-color: white;"
-					>
+						style="padding: 2%; background-color: white;">
 						<tr>
 							<th>Origin</th>
 							<th>Destination</th>
-							<th>Backhaul Origin</th> 
+							<th>Backhaul Origin</th>
 							<th>Vehicle Type</th>
 							<th>Emptyhaul Distance</th>
 							<th>PTPK</th>
@@ -511,12 +494,11 @@
 				</div>
 				<div id="menu6" class="tab-pane fade" style="visibility: hidden;">
 					<table class="table table-bordered table-condensed tabel-hover"
-						style="padding: 2%; background-color: white;"
-					>
+						style="padding: 2%; background-color: white;">
 						<tr>
 							<th>Origin</th>
 							<th>Destination</th>
-							<th>Backhaul Origin</th> 
+							<th>Backhaul Origin</th>
 							<th>Vehicle Type</th>
 							<th>Emptyhaul Distance</th>
 							<th>PTPK</th>
@@ -544,12 +526,11 @@
 				</div>
 				<div id="menu7" class="tab-pane fade" style="visibility: hidden;">
 					<table class="table table-bordered table-condensed tabel-hover"
-						style="padding: 2%; background-color: white;"
-					>
+						style="padding: 2%; background-color: white;">
 						<tr>
 							<th>Origin</th>
 							<th>Destination</th>
-							<th>Backhaul Origin</th> 
+							<th>Backhaul Origin</th>
 							<th>Vehicle Type</th>
 							<th>Emptyhaul Distance</th>
 							<th>PTPK</th>
@@ -577,12 +558,11 @@
 				</div>
 				<div id="menu8" class="tab-pane fade" style="visibility: hidden;">
 					<table class="table table-bordered table-condensed tabel-hover"
-						style="padding: 2%; background-color: white;"
-					>
+						style="padding: 2%; background-color: white;">
 						<tr>
 							<th>Origin</th>
 							<th>Destination</th>
-							<th>Backhaul Origin</th> 
+							<th>Backhaul Origin</th>
 							<th>Vehicle Type</th>
 							<th>Emptyhaul Distance</th>
 							<th>PTPK</th>
@@ -610,12 +590,11 @@
 				</div>
 				<div id="menu9" class="tab-pane fade" style="visibility: hidden;">
 					<table class="table table-bordered table-condensed tabel-hover"
-						style="padding: 2%; background-color: white;"
-					>
+						style="padding: 2%; background-color: white;">
 						<tr>
 							<th>Origin</th>
 							<th>Destination</th>
-							<th>Backhaul Origin</th> 
+							<th>Backhaul Origin</th>
 							<th>Vehicle Type</th>
 							<th>Emptyhaul Distance</th>
 							<th>PTPK</th>
@@ -644,8 +623,8 @@
 		</section>
 		<div class="panel-body"></div>
 		<footer class="panel-footer"
-			style=" bottom:2%; text-align:center; color:white;position:relative; "
-		> Copyright &copy McKinsey & Company</footer>
+			style=" bottom:2%; text-align:center; color:white;position:relative; ">
+		Copyright &copy McKinsey & Company</footer>
 	</div>
 </body>
 </html>

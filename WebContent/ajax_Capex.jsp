@@ -7,27 +7,26 @@
 <%@page import="java.text.DecimalFormatSymbols"%>
 <%@page import="java.util.Locale"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
-%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 </head>
 <body>
 	<table class="table table-hover table-condensed">
-				<thead>
-					<tr>
-						<th>Vehicle Type</th>
-						<th>Capacity(tons)</th>
-						<th>Cost of Truck (INR)</th>
-						<th>Residual value of the truck at end of EMI (%)</th>
-						<th>Loan amount(%)</th>
-						<th>No. of years of EMI payment</th>
-						<th>Rate of Interest (%)</th>
-						<th>Flat Rate of Interest (%)</th>
-					</tr>
-				</thead>
-	<% 
+		<thead>
+			<tr>
+				<th>Vehicle Type</th>
+				<th>Capacity(tons)</th>
+				<th>Cost of Truck (INR)</th>
+				<th>Residual value of the truck at end of EMI (%)</th>
+				<th>Loan amount(%)</th>
+				<th>No. of years of EMI payment</th>
+				<th>Rate of Interest (%)</th>
+				<th>Flat Rate of Interest (%)</th>
+			</tr>
+		</thead>
+		<% 
 					DecimalFormat df = new DecimalFormat("##,###", new DecimalFormatSymbols(Locale.US));
 							try{
 							String cap=(String)request.getParameter("val");
@@ -42,35 +41,27 @@
 					               while( rs.next() )
 					 		 {
 							 	%>
-				<tbody>
-					<tr>
-						<td><input type="text" readonly="readonly"
-							value='<%=rs.getString("typeofgood")%>'
-						></td>
-						<td><input type="text" readonly="readonly"
-							value='<%=rs.getInt("capacity")%>'
-						></td>
-						<td><input type="text" readonly="readonly"
-							value='<%=rs.getInt("costoftruck")%>'
-						></td>
-						<td><input type="text" readonly="readonly"
-							value='<%=rs.getFloat("residualvalueoftruck")%>'
-						></td>
-						<td><input type="text" readonly="readonly"
-							value='<%=rs.getFloat("loanpercentage")%>'
-						></td>
-						<td><input type="text" readonly="readonly"
-							value='<%=rs.getInt("yearsemi")%>'
-						></td>
-						<td><input type="text" readonly="readonly"
-							value='<%=rs.getFloat("rateofintrest")%>'
-						></td>
-						<td><input type="text" readonly="readonly"
-							value='<%=rs.getFloat("flatroi")%>'
-						></td>
-					</tr>
-				</tbody>
-				<%
+		<tbody>
+			<tr>
+				<td><input type="text" readonly="readonly"
+					value='<%=rs.getString("typeofgood")%>'></td>
+				<td><input type="text" readonly="readonly"
+					value='<%=rs.getInt("capacity")%>'></td>
+				<td><input type="text" readonly="readonly"
+					value='<%=rs.getInt("costoftruck")%>'></td>
+				<td><input type="text" readonly="readonly"
+					value='<%=rs.getFloat("residualvalueoftruck")%>'></td>
+				<td><input type="text" readonly="readonly"
+					value='<%=rs.getFloat("loanpercentage")%>'></td>
+				<td><input type="text" readonly="readonly"
+					value='<%=rs.getInt("yearsemi")%>'></td>
+				<td><input type="text" readonly="readonly"
+					value='<%=rs.getFloat("rateofintrest")%>'></td>
+				<td><input type="text" readonly="readonly"
+					value='<%=rs.getFloat("flatroi")%>'></td>
+			</tr>
+		</tbody>
+		<%
 					 		}
 			
 					            	
@@ -90,37 +81,31 @@
 					               while( rs1.next())
 					 		 {
 			%><tbody>
-		<tr>
-			<td><input type="text" readonly="readonly"
-							value='<%=rs1.getString("typeofgood")%>'
-						></td>
-						<td><input type="text" readonly="readonly"
-							value='<%=rs1.getInt("capacity")%>'
-						></td>
-						<td><input type="text" readonly="readonly"
-							value='<%=rs1.getInt("costoftruck")%>'
-						></td>
-						<td><input type="text" readonly="readonly"
-							value='<%=rs1.getFloat("residualvalueoftruck")*100%>'
-						></td>
-						<td><input type="text" readonly="readonly"
-							value='<%=rs1.getFloat("loanpercentage")%>'
-						></td>
-						<td><input type="text" readonly="readonly"
-							value='<%=rs1.getInt("yearsemi")%>'
-						></td>
-						<td><input type="text" readonly="readonly"
-							value='<%=rs1.getFloat("rateofintrest")%>'
-						></td>
-						<td><input type="text" readonly="readonly"
-							value='<%=rs1.getFloat("flatroi")%>'
-						></td>
-		</tr></tbody>
-	
-	<%}}
+			<tr>
+				<td><input type="text" readonly="readonly"
+					value='<%=rs1.getString("typeofgood")%>'></td>
+				<td><input type="text" readonly="readonly"
+					value='<%=rs1.getInt("capacity")%>'></td>
+				<td><input type="text" readonly="readonly"
+					value='<%=rs1.getInt("costoftruck")%>'></td>
+				<td><input type="text" readonly="readonly"
+					value='<%=rs1.getFloat("residualvalueoftruck")*100%>'></td>
+				<td><input type="text" readonly="readonly"
+					value='<%=rs1.getFloat("loanpercentage")%>'></td>
+				<td><input type="text" readonly="readonly"
+					value='<%=rs1.getInt("yearsemi")%>'></td>
+				<td><input type="text" readonly="readonly"
+					value='<%=rs1.getFloat("rateofintrest")%>'></td>
+				<td><input type="text" readonly="readonly"
+					value='<%=rs1.getFloat("flatroi")%>'></td>
+			</tr>
+		</tbody>
+
+		<%}}
 					}
 				catch(Exception e){
 				e.printStackTrace();
-				}%></table>
+				}%>
+	</table>
 </body>
 </html>

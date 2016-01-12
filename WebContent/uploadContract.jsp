@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
-%>
+	pageEncoding="ISO-8859-1"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.ResultSet"%>
@@ -54,7 +53,7 @@ document.getElementById('tab').innerHTML=val;
   
 </script>
 </head>
-<body onload="sendInfo()" style="width: 100%" class="panel-body" >
+<body onload="sendInfo()" style="width: 100%" class="panel-body">
 	<%String name = request.getParameter( "name" ); %>
 	<div class="card">
 		<header>
@@ -67,15 +66,15 @@ document.getElementById('tab').innerHTML=val;
 			<a style="float: right;" href="Logout">Logout</a>
 		</p>
 		</header>
-	<nav class="navbar navbar-inverse">
+		<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="Auto.jsp">Auto</a></li>
 				<li class="active"><a href="home.jsp">Classic</a></li>
 				<li class="active"><a href="Advanced.jsp">Advanced</a></li>
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"
-				>Control Panel<span class="caret"></span></a>
+					data-toggle="dropdown" href="#">Control Panel<span
+						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="Capex.jsp">Capex</a></li>
 						<li><a href="fixed.jsp">Fixed Cost</a></li>
@@ -92,18 +91,18 @@ document.getElementById('tab').innerHTML=val;
 		</div>
 		</nav>
 		<section style="width:100%;"
-			class="login-card table-responsive table table-bordered table-condensed tabel-hover"
-		>
+			class="login-card table-responsive table table-bordered table-condensed tabel-hover">
 		<center>
 			<h5 style="font-weight: bold; padding: 1%">Contract</h5>
-			<form action="download.jsp" method="post" class="form-group panel-body" name="vform">
+			<form action="download.jsp" method="post"
+				class="form-group panel-body" name="vform">
 				<table>
 					<tr>
 						<td align="center">Industry Name:</td>
 					</tr>
 					<tr>
-						<td><select name='nameind' class="form-control" onchange="sendInfo()"
-								>
+						<td><select name='nameind' class="form-control"
+							onchange="sendInfo()">
 								<%
 							int empid=(int)session.getAttribute("empid");
 							 String sql = "SELECT DISTINCT industryname from contractupload order by sno";
@@ -117,8 +116,7 @@ document.getElementById('tab').innerHTML=val;
 					 		 {
 							 	%>
 								<option value='<%=rs.getString("industryname") %>'
-									class="form-control"
-								><%=rs.getString("industryname") %></option>
+									class="form-control"><%=rs.getString("industryname") %></option>
 								<%
 					 		}
 			
@@ -139,22 +137,20 @@ document.getElementById('tab').innerHTML=val;
 						<td id="tab"></td>
 					</tr>
 					<tr>
-						<td ><center>
+						<td><center>
 								<input type="hidden" value='<%=session.getAttribute("empid")%>'
-									name="empid"
-								> <br> <input type="submit" name="submit"
-									class="login login-submit btn btn-primary active"
-									value="Submit" 
-								>
+									name="empid"> <br> <input type="submit"
+									name="submit" class="login login-submit btn btn-primary active"
+									value="Submit">
 							</center></td>
-					</tr></form>
+					</tr>
+					</form>
 				</table>
-			
-		</section>		
+		</section>
 		<div class="panel-body"></div>
 		<footer class="panel-footer"
-			style=" bottom:2%; text-align:center; color:white;position:  relative; "
-		> Copyright &copy McKinsey & Company</footer>
+			style=" bottom:2%; text-align:center; color:white;position:  relative; ">
+		Copyright &copy McKinsey & Company</footer>
 		</section>
 	</div>
 </body>

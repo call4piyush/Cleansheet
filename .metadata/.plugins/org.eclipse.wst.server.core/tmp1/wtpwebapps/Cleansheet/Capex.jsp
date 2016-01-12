@@ -4,8 +4,7 @@
 <%@page import="java.sql.SQLException"%>
 <%@page import="com.DB.connection.Connect"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
-%>
+	pageEncoding="ISO-8859-1"%>
 <%  	 
 		if(request.getSession().getAttribute("empid")==null)
         {      request.getRequestDispatcher("index.jsp").forward(request, response);   
@@ -41,8 +40,8 @@
 				<li class="active"><a href="home.jsp">Classic</a></li>
 				<li class="active"><a href="Advanced.jsp">Advanced</a></li>
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"
-				>Control Panel<span class="caret"></span></a>
+					data-toggle="dropdown" href="#">Control Panel<span
+						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="Capex.jsp">Capex</a></li>
 						<li><a href="fixed.jsp">Fixed Cost</a></li>
@@ -89,29 +88,21 @@
 						<tbody>
 							<tr>
 								<td><input type="text" readonly="readonly"
-									value='<%=rs.getString("typeofgood")%>'
-								></td>
+									value='<%=rs.getString("typeofgood")%>'></td>
 								<td><input type="text" readonly="readonly"
-									value='<%=rs.getInt("capacity")%>'
-								></td>
+									value='<%=rs.getInt("capacity")%>'></td>
 								<td><input type="text" readonly="readonly"
-									value='<%=rs.getInt("costoftruck")%>'
-								></td>
+									value='<%=rs.getInt("costoftruck")%>'></td>
 								<td><input type="text" readonly="readonly"
-									value='<%=rs.getFloat("residualvalueoftruck")*100%>'
-								></td>
+									value='<%=rs.getFloat("residualvalueoftruck")*100%>'></td>
 								<td><input type="text" readonly="readonly"
-									value='<%=rs.getFloat("loanpercentage")%>'
-								></td>
+									value='<%=rs.getFloat("loanpercentage")%>'></td>
 								<td><input type="text" readonly="readonly"
-									value='<%=rs.getInt("yearsemi")%>'
-								></td>
+									value='<%=rs.getInt("yearsemi")%>'></td>
 								<td><input type="text" readonly="readonly"
-									value='<%=rs.getFloat("rateofintrest")%>'
-								></td>
+									value='<%=rs.getFloat("rateofintrest")%>'></td>
 								<td><input type="text" readonly="readonly"
-									value='<%=rs.getFloat("flatroi")%>'
-								></td>
+									value='<%=rs.getFloat("flatroi")%>'></td>
 							</tr>
 						</tbody>
 						<%
@@ -130,8 +121,8 @@
 		</section>
 		<div class="panel-body"></div>
 		<footer class="panel-footer"
-			style=" bottom:2%; text-align:center; color:white;position:  relative; "
-		> Copyright &copy McKinsey & Company</footer>
+			style=" bottom:2%; text-align:center; color:white;position:  relative; ">
+		Copyright &copy McKinsey & Company</footer>
 	</div>
 </body>
 </html>

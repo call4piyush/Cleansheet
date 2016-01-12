@@ -4,8 +4,7 @@
 <%@page import="java.sql.SQLException"%>
 <%@page import="com.DB.connection.Connect"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
-%>
+	pageEncoding="ISO-8859-1"%>
 <% 	if(request.getSession().getAttribute("empid")==null)
         {      request.getRequestDispatcher("index.jsp").forward(request, response);   
            }else{
@@ -33,7 +32,7 @@
 			<a style="float: right;" href="Logout">Logout</a>
 		</p>
 		</header>
-		
+
 		<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
@@ -41,8 +40,8 @@
 				<li class="active"><a href="admin.jsp">Classic</a></li>
 				<li class="active"><a href="adminAdvanced.jsp">Advanced</a></li>
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"
-				>Control Panel<span class="caret"></span></a>
+					data-toggle="dropdown" href="#">Control Panel<span
+						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="adminCapex.jsp">Capex</a></li>
 						<li><a href="adminfixed.jsp">Fixed Cost</a></li>
@@ -55,8 +54,8 @@
 				<li class="active"><a href="adminUploadFreight.jsp">Upload
 						Freight</a></li>
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"
-				>Contract<span class="caret"></span></a>
+					data-toggle="dropdown" href="#">Contract<span
+						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="adminContract.jsp">View Contract</a></li>
 						<li><a href="adminUploadContract.jsp">Upload Contract</a></li>
@@ -66,8 +65,9 @@
 				<li class="active"><a href="adminHelp.jsp">Help/FAQs</a></li>
 				<li class="active"></li>
 			</ul>
-			
-		</div></nav>
+
+		</div>
+		</nav>
 		<section style="width:100%">
 		<div class="login-card">
 			<h5 align="center" style="font-weight: bold; padding: 1%">
@@ -107,39 +107,32 @@
 							 	%><tbody>
 							<tr>
 								<td><input type="text"
-									value='<%=rs.getString("typeofgood")%>' name="type<%=j %>"
-								></td>
+									value='<%=rs.getString("typeofgood")%>' name="type<%=j %>"></td>
 								<td><input type="text"
-									value='<%=rs.getInt("driver/cleaner salary")%>' name="salary<%=j %>"
-								></td>
+									value='<%=rs.getInt("driver/cleaner salary")%>'
+									name="salary<%=j %>"></td>
 								<td><input type="text"
-									value='<%=rs.getInt("driver/cleaner bhatta")%>' name="bhatta<%=j %>"
-								></td>
+									value='<%=rs.getInt("driver/cleaner bhatta")%>'
+									name="bhatta<%=j %>"></td>
 								<td><input type="text"
-									value='<%=rs.getInt("maintenancepermonth")%>' name="month<%=j %>"
-								></td>
+									value='<%=rs.getInt("maintenancepermonth")%>'
+									name="month<%=j %>"></td>
 								<td><input type="text"
-									value='<%=rs.getInt("roadtaxyear")%>' name="roadtax<%=j %>"
-								></td>
+									value='<%=rs.getInt("roadtaxyear")%>' name="roadtax<%=j %>"></td>
 								<td><input type="text"
-									value='<%=rs.getInt("roadpermityear")%>' name="roadpermit<%=j %>"
-								></td>
+									value='<%=rs.getInt("roadpermityear")%>'
+									name="roadpermit<%=j %>"></td>
 								<td><input type="text"
 									value='<%=rs.getFloat("insuranceaspercentageofvechiclecost")%>'
-									name="insurance<%=j %>"
-								></td>
+									name="insurance<%=j %>"></td>
 								<td><input type="text"
-									value='<%=rs.getInt("admin costs")%>' name="admin<%=j %>"
-								></td>
+									value='<%=rs.getInt("admin costs")%>' name="admin<%=j %>"></td>
 								<td><input type="text" value='<%=rs.getInt("tarpaulin")%>'
-									name="tarpaulin<%=j %>"
-								></td>
+									name="tarpaulin<%=j %>"></td>
 								<td><input type="text"
-									value='<%=rs.getInt("profitmargin")%>' name="profit<%=j %>"
-								></td>
+									value='<%=rs.getInt("profitmargin")%>' name="profit<%=j %>"></td>
 								<td><input type="text"
-									value='<%=rs.getInt("loadingcharges")%>' name="loading<%=j %>"
-								></td>
+									value='<%=rs.getInt("loadingcharges")%>' name="loading<%=j %>"></td>
 							</tr>
 						</tbody>
 						<%
@@ -165,16 +158,14 @@
 							<td></td>
 							<td><center>
 									<input type="hidden" value='<%=session.getAttribute("empid")%>'
-										name="empid"
-									> <input type="submit" name="submit" value="Submit"
-										class="login login-submit btn btn-primary active"
-									>
+										name="empid"> <input type="submit"
+										name="submit" value="Submit"
+										class="login login-submit btn btn-primary active">
 								</center></td>
 							<td><center>
 									<a href="adminfixed.jsp"><input type="button"
 										value="Cancel"
-										class="login login-submit btn btn-primary active"
-									></a>
+										class="login login-submit btn btn-primary active"></a>
 								</center></td>
 							<td></td>
 						</tr>
@@ -184,8 +175,8 @@
 		</section>
 		<div class="panel-body"></div>
 		<footer class="panel-footer"
-			style=" bottom:2%; text-align:center; color:white;position:  relative; "
-		> Copyright &copy McKinsey & Company</footer>
+			style=" bottom:2%; text-align:center; color:white;position:  relative; ">
+		Copyright &copy McKinsey & Company</footer>
 	</div>
 </body>
 </html>

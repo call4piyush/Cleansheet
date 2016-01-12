@@ -4,7 +4,7 @@
 <%@page import="java.sql.SQLException"%>
 <%@page import="com.DB.connection.Connect"%>
 
-	<select name='namecom' class="form-control"	>		
+<select name='namecom' class="form-control">
 	<% 					
 						String cap=(String)request.getParameter("val");
 						String sql = "SELECT companyname from contractupload WHERE industryname =? ";
@@ -17,10 +17,8 @@
 					               while( rs.next() )
 					 		 {
 							 	%>
-			<option value='<%=rs.getString("companyname") %>'
-									class="form-control"
-								><%=rs.getString("companyname") %></option>	
-				<%
+	<option value='<%=rs.getString("companyname") %>' class="form-control"><%=rs.getString("companyname") %></option>
+	<%
 					 		}				            	
 				}
 				catch(Exception e){
@@ -28,4 +26,5 @@
 					RequestDispatcher ReqDis = request.getRequestDispatcher("error.jsp");
 				ReqDis.forward(request, response);
 				}
-				%></select>
+				%>
+</select>

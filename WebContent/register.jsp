@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
-%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,14 +13,13 @@
 		<form action="Register" method="post">
 			<input type="text" name="empid" placeholder="User Id" required>
 			<input type="text" name="user" placeholder="Name" required> <input
-				type="password" name="pass" placeholder="Password" required
-			> <input type="text" name="address" placeholder="Address" required>
+				type="password" name="pass" placeholder="Password" required>
+			<input type="text" name="address" placeholder="Address" required>
 			<input type="text" name="company" placeholder="Company Name" required>
 			<input type="text" name="chargecode"
-				placeholder="Charge Code (Optional)"
-			> <input type="submit" name="register" class="login login-submit"
-				value="Create User"
-			>
+				placeholder="Charge Code (Optional)"> <input
+				type="submit" name="register" class="login login-submit"
+				value="Create User">
 		</form>
 	</div>
 </body>

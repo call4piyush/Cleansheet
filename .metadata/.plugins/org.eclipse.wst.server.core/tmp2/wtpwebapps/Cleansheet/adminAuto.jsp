@@ -4,8 +4,7 @@
 <%@page import="java.sql.SQLException"%>
 <%@page import="com.DB.connection.Connect"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
-%>
+	pageEncoding="ISO-8859-1"%>
 <%  	 
 		if(request.getSession().getAttribute("empid")==null)
         {      request.getRequestDispatcher("index.jsp").forward(request, response);   
@@ -15,16 +14,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type"
-	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"
->
+	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1">
 <title>AUTO</title>
 <script type="text/javascript"
-	src="http://maps.google.com/maps/api/js?sensor=false"
-></script>
+	src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script language="javascript" type="text/javascript" src="js/Map.js"></script>
 <script language="javascript" type="text/javascript"
-	src="js/latlong1.js"
-></script>
+	src="js/latlong1.js"></script>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -84,8 +80,8 @@ document.getElementById("tab").style.visibility="visible";
 				<li class="active"><a href="admin.jsp">Classic</a></li>
 				<li class="active"><a href="adminAdvanced.jsp">Advanced</a></li>
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"
-				>Control Panel<span class="caret"></span></a>
+					data-toggle="dropdown" href="#">Control Panel<span
+						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="adminCapex.jsp">Capex</a></li>
 						<li><a href="adminfixed.jsp">Fixed Cost</a></li>
@@ -103,28 +99,23 @@ document.getElementById("tab").style.visibility="visible";
 		</nav>
 		<section>
 		<div id="map_canvas" class="right panel-body embed-responsive-item"
-			style="height: 15%"
-		></div>
+			style="height: 15%"></div>
 		<div class="login-card ">
 			<center>
 				<h5 class="panel-header" style="font-weight: bold; padding: 1%">Auto</h5>
 			</center>
 			<form action="Loc" method="post" class="form-group panel-body"
-				name="vform"
-			>
+				name="vform">
 				<table align="center">
 					<tr>
 						<td><input type="text" name="start" id="start"
 							placeholder="Origin" onchange="calcRoute()" required
-							class="form-control"
-						></td>
+							class="form-control"></td>
 						<td><input type="text" name="end" id="end"
 							placeholder="Destination" onblur="calcLat()"
-							onchange="calcRoute()" required class="form-control"
-						></td>
+							onchange="calcRoute()" required class="form-control"></td>
 						<td><select name='Capacity' class="form-control"
-							onchange="sendInfo()" id="dropDownId"
-						>
+							onchange="sendInfo()" id="dropDownId">
 								<%
 							int empid=(int)session.getAttribute("empid");
 							 String sql = "select typeofgood,capacity from truckparam order by capacity";
@@ -137,8 +128,7 @@ document.getElementById("tab").style.visibility="visible";
 					 		 {
 							 	%>
 								<option value='<%=rs.getString("typeofgood") %>'
-									name='typeofgood' class="form-control"
-								><%=rs.getString("typeofgood") %>
+									name='typeofgood' class="form-control"><%=rs.getString("typeofgood") %>
 								</option>
 								<%
 					 		}					            	
@@ -152,15 +142,13 @@ document.getElementById("tab").style.visibility="visible";
 						</select></td>
 						<td><input type="hidden" name="distance" id="distance">
 							<input type="hidden" name="lat" id="lat"> <input
-							type="hidden" name="long" id="long"
-						> <input type="hidden"
-							value='<%=session.getAttribute("empid")%>' name="empid"
-						>
+							type="hidden" name="long" id="long"> <input
+							type="hidden" value='<%=session.getAttribute("empid")%>'
+							name="empid">
 							<center>
 								<input type="submit" name="submit"
 									class="login login-submit btn btn-primary active"
-									value="Submit" disabled="true" id="mySubmit"
-								>
+									value="Submit" disabled="true" id="mySubmit">
 							</center></td>
 					</tr>
 				</table>
@@ -172,13 +160,12 @@ document.getElementById("tab").style.visibility="visible";
 		</div>
 		<div
 			class="login-card table-responsive table table-bordered table-condensed tabel-hover"
-			id="tab" style="visibility: hidden;"
-		></div>
+			id="tab" style="visibility: hidden;"></div>
 		</section>
 		<div class="panel-body"></div>
 		<footer class="panel-footer"
-			style=" bottom:2%; text-align:center; color:white;position:relative; "
-		> Copyright &copy McKinsey & Company</footer>
+			style=" bottom:2%; text-align:center; color:white;position:relative; ">
+		Copyright &copy McKinsey & Company</footer>
 	</div>
 </body>
 </html>

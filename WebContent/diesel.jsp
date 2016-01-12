@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
-%>
+	pageEncoding="ISO-8859-1"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.ResultSet"%>
@@ -18,8 +17,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Add Locations</title>
 <script type="text/javascript"
-	src="http://maps.google.com/maps/api/js?sensor=false"
-></script>
+	src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script language="javascript" type="text/javascript" src="js/latlong.js"></script>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <script src="js/jquery.js"></script>
@@ -39,7 +37,7 @@
 			<a style="float: right;" href="Logout">Logout</a>
 		</p>
 		</header>
-		
+
 		<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
@@ -47,8 +45,8 @@
 				<li class="active"><a href="admin.jsp">Classic</a></li>
 				<li class="active"><a href="adminAdvanced.jsp">Advanced</a></li>
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"
-				>Control Panel<span class="caret"></span></a>
+					data-toggle="dropdown" href="#">Control Panel<span
+						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="adminCapex.jsp">Capex</a></li>
 						<li><a href="adminfixed.jsp">Fixed Cost</a></li>
@@ -61,8 +59,8 @@
 				<li class="active"><a href="adminUploadFreight.jsp">Upload
 						Freight</a></li>
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"
-				>Contract<span class="caret"></span></a>
+					data-toggle="dropdown" href="#">Contract<span
+						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="adminContract.jsp">View Contract</a></li>
 						<li><a href="adminUploadContract.jsp">Upload Contract</a></li>
@@ -72,14 +70,14 @@
 				<li class="active"><a href="adminHelp.jsp">Help/FAQs</a></li>
 				<li class="active"></li>
 			</ul>
-			
-		</div></nav>
+
+		</div>
+		</nav>
 		<section style="width:100%; " class="panel-body">
 		<center>
 			<h5 style="font-weight: bold; padding: 1%">Update Diesel Price</h5>
 			<form action="diesel_1.jsp" method="post"
-				class="form-group panel-body"
-			>
+				class="form-group panel-body">
 				<table>
 					<tr>
 						<td>Enter Price of Diesel(INR):<br></td>
@@ -91,8 +89,7 @@
 					<tr>
 						<td colspan="2" style="text-align: center;"><input
 							type="submit" name="submit"
-							class="login login-submit btn btn-primary active" value="Update"
-						></td>
+							class="login login-submit btn btn-primary active" value="Update"></td>
 					</tr>
 				</table>
 			</form>
@@ -100,8 +97,8 @@
 		<br>
 		<br>
 		<footer class="panel-footer"
-			style=" bottom:2%; text-align:center; color:white;position:  relative; "
-		> Copyright © McKinsey & Company</footer> </section>
+			style=" bottom:2%; text-align:center; color:white;position:  relative; ">
+		Copyright © McKinsey & Company</footer> </section>
 	</div>
 </body>
 </html>

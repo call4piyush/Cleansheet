@@ -4,8 +4,7 @@
 <%@page import="java.sql.SQLException"%>
 <%@page import="com.DB.connection.Connect"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
-%>
+	pageEncoding="ISO-8859-1"%>
 <% 	if(request.getSession().getAttribute("empid")==null)
         {      request.getRequestDispatcher("index.jsp").forward(request, response);   
            }else{
@@ -38,8 +37,8 @@
 				<li class="active"><a href="admin.jsp">Classic</a></li>
 				<li class="active"><a href="adminAdvanced.jsp">Advanced</a></li>
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"
-				>Control Panel<span class="caret"></span></a>
+					data-toggle="dropdown" href="#">Control Panel<span
+						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="adminCapex.jsp">Capex</a></li>
 						<li><a href="adminfixed.jsp">Fixed Cost</a></li>
@@ -99,39 +98,28 @@
 							 	%><tbody>
 							<tr>
 								<td><input type="text"
-									value='<%=rs.getString("typeofgood")%>' name="type"
-								></td>
+									value='<%=rs.getString("typeofgood")%>' name="type"></td>
 								<td><input type="text"
-									value='<%=rs.getInt("driver/cleaner salary")%>' name="salary"
-								></td>
+									value='<%=rs.getInt("driver/cleaner salary")%>' name="salary"></td>
 								<td><input type="text"
-									value='<%=rs.getInt("driver/cleaner bhatta")%>' name="bhatta"
-								></td>
+									value='<%=rs.getInt("driver/cleaner bhatta")%>' name="bhatta"></td>
 								<td><input type="text"
-									value='<%=rs.getInt("maintenancepermonth")%>' name="month"
-								></td>
+									value='<%=rs.getInt("maintenancepermonth")%>' name="month"></td>
 								<td><input type="text"
-									value='<%=rs.getInt("roadtaxyear")%>' name="roadtax"
-								></td>
+									value='<%=rs.getInt("roadtaxyear")%>' name="roadtax"></td>
 								<td><input type="text"
-									value='<%=rs.getInt("roadpermityear")%>' name="roadpermit"
-								></td>
+									value='<%=rs.getInt("roadpermityear")%>' name="roadpermit"></td>
 								<td><input type="text"
 									value='<%=rs.getFloat("insuranceaspercentageofvechiclecost")%>'
-									name="insurance"
-								></td>
+									name="insurance"></td>
 								<td><input type="text"
-									value='<%=rs.getInt("admin costs")%>' name="admin"
-								></td>
+									value='<%=rs.getInt("admin costs")%>' name="admin"></td>
 								<td><input type="text" value='<%=rs.getInt("tarpaulin")%>'
-									name="tarpaulin"
-								></td>
+									name="tarpaulin"></td>
 								<td><input type="text"
-									value='<%=rs.getInt("profitmargin")%>' name="profit"
-								></td>
+									value='<%=rs.getInt("profitmargin")%>' name="profit"></td>
 								<td><input type="text"
-									value='<%=rs.getInt("loadingcharges")%>' name="loading"
-								></td>
+									value='<%=rs.getInt("loadingcharges")%>' name="loading"></td>
 							</tr>
 						</tbody>
 						<%
@@ -158,16 +146,14 @@
 							<td></td>
 							<td><center>
 									<input type="hidden" value='<%=session.getAttribute("empid")%>'
-										name="empid"
-									> <input type="submit" name="submit" value="Submit"
-										class="login login-submit btn btn-primary active"
-									>
+										name="empid"> <input type="submit"
+										name="submit" value="Submit"
+										class="login login-submit btn btn-primary active">
 								</center></td>
 							<td><center>
 									<a href="adminfixed.jsp"><input type="button"
 										value="Cancel"
-										class="login login-submit btn btn-primary active"
-									></a>
+										class="login login-submit btn btn-primary active"></a>
 								</center></td>
 							<td></td>
 						</tr>
@@ -177,8 +163,8 @@
 		</section>
 		<div class="panel-body"></div>
 		<footer class="panel-footer"
-			style=" bottom:2%; text-align:center; color:white;position:  relative; "
-		> Copyright &copy McKinsey & Company</footer>
+			style=" bottom:2%; text-align:center; color:white;position:  relative; ">
+		Copyright &copy McKinsey & Company</footer>
 	</div>
 </body>
 </html>
