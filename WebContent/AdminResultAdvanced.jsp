@@ -571,7 +571,7 @@
 		<div class="panel-body"></div>
 		<footer class="panel-footer"
 			style=" bottom:2%; text-align:center; color:white;position:  relative; ">
-		Copyright &copy McKinsey & Company</footer>
+		Copyright &copy McKinsey &#38; Company</footer>
 	</div>
 	</div>
 	</div>
